@@ -1,0 +1,25 @@
+[
+{"id":"1","title":"The Bedroom","date":"1889","artist":"Vincent van Gogh","born":"Dutch","age":"1853-1890","image_name":"img1"},
+{"id":"2","title":"Paris Street; Rainy Day","date":"1877","artist":"Gustave Caillebotte","born":"French","age":"1848-1894","image_name":"img2"},
+{"id":"3","title":"Under the Wave off Kanagawa (Kanagawa oki nami ura)","date":"1830","artist":"Katsushika Hokusai","born":"Japanese","age":"1760-1849","image_name":"img3"},
+{"id":"4","title":"A Sunday on La Grande Jatte �� 1884","date":"1884","artist":"Georges Seurat","born":"French","age":"1859-1891","image_name":"img4"}
+,
+{"id":"5","title":"The Assumption of the Virgin","date":"1577-79","artist":"Domenikos Theotokopoulos, called El Greco","born":"Greek, active in Spain","age":"1541-1614","image_name":"img5"},
+{"id":"6","title":"Two Sisters (On the Terrace)","date":"1881","artist":"Pierre-Auguste Renoir","born":"French","age":"1841-1919","image_name":"img6"},
+{"id":"7","title":"Self-Portrait","date":"1887","artist":"Vincent van Gogh","born":"Dutch","age":"1853-1890","image_name":"img7"},
+{"id":"8","title":"At the Moulin Rouge","date":"1892/95","artist":"Henri de Toulouse-Lautrec","born":"French","age":"1864-1901","image_name":"img8"},
+{"id":"9","title":"Woman at Her Toilette","date":"1875/80","artist":"Berthe Morisot","born":"French","age":"1841-1895","image_name":"img9"},
+{"id":"10","title":"Saint George and the Dragon","date":"1434/35","artist":"Bernat Martorell","born":"Spanish","age":"1400-1452","image_name":"img10"},
+{"id":"11","title":"Cupid Chastised","date":"1613","artist":"Bartolomeo Manfredi","born":"Italian","age":"1582-1622","image_name":"img11"},
+{"id":"12","title":"A Young Lady with a Parrot","date":"c. 1730","artist":"Rosalba Carriera","born":"Italian","age":"1675-1757","image_name":"img12"},
+{"id":"13","title":"Still Life with Game Fowl","date":"1600/03","artist":"Juan Sánchez Cotán","born":"Spanish","age":"1560��1627","image_name":"img13"}
+,
+{"id":"14","title":"At Mouquin’s","date":"1905","artist":"William Glackens","born":"American","age":"1870��1938","image_name":"img14"}
+,
+{"id":"15","title":"Still Life with Dead Game, Fruits, and Vegetables in a Market","date":"1614","artist":"Frans Snyders","born":"Flemish","age":"1579-1657","image_name":"img15"},
+{"id":"16","title":"Evening Snow on a Floss Shaper (Nurioke no bosetsu)","date":"c.1766","artist":"Suzuki Harunobu","born":"Japanese","age":"1725 (?)-1770","image_name":"img16"},
+{"id":"17","title":"The actor Bando Mitsugoro II as Ishii Genzo","date":"1794","artist":"Toshusai Sharaku","born":"Japanese","age":"active.1794-95","image_name":"img17"},
+{"id":"18","title":"Mishima: Morning Mist (Mishima, asagiri)","date":"c.1833/34","artist":"Utagawa Hiroshige","born":"Japanese","age":"1797-1858","image_name":"img18"},
+{"id":"19","title":"Alice","date":"1892","artist":"William Merritt Chase","born":"American","age":"1849-1916","image_name":"img19"},
+{"id":"20","title":"October Day","date":"1890/93","artist":"Jean Charles Cazin","born":"French","age":"1841-1901","image_name":"img20"}
+]
