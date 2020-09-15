@@ -1,9 +1,9 @@
 #Xcode
 *.xcodeproj/*
 !*.xcodeproj/project.pbxproj
-!*.xcworkspace/xcuserdata/miyucg.xcuserdatad/UserInterfaceState.xcuserstate
 !*.xcworkspace/contents.xcworkspacedata
 .DS_Store
+Paint_Recommend.xcodeproj/project.xcworkspace/xcuserdata/miyucg.xcuserdatad/UserInterfaceState.xcuserstate
 
 #CocoaPod
 Paint_Recommend/Pods/
