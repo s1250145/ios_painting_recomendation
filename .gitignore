@@ -1,6 +1,14 @@
 /google-cloud-sdk/
 __pycache__/
-
 .DS_Store
-
 *.swp
+
+# Xcode
+Paint_Recommend/Paint_Recommend.xcodeproj/project.xcworkspace/xcuserdata/miyucg.xcuserdatad/UserInterfaceState.xcuserstate
+Paint_Recommend/Paint_Recommend.xcodeproj/*
+Paint_Recommend/Paint_Recommend.xcodeproj/project.pbxproj
+Paint_Recommend/Paint_Recommend.xcodeproj/project.xcworkspace/*
+
+# CocoaPod
+Paint_Recommend/Pods/
+Paint_Recommend/Podfile.lock
