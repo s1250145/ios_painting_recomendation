@@ -16,7 +16,7 @@ class PaintCollectionViewController: UIViewController, UICollectionViewDelegate,
         view.backgroundColor = .white
 
         self.title = "Garally"
-        self.navigationController?.navigationBar.titleTextAttributes = [.font: UIFont.init(name: "CourierNewPSMT", size: 30) as Any]
+        self.navigationController?.navigationBar.titleTextAttributes = [.font: UIFont.init(name: "AmericanTypewriter", size: 30) as Any]
         self.navigationController?.navigationBar.barTintColor = UIColor(red: 187/256, green: 188/256, blue: 222/256, alpha: 1.0)
 
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)

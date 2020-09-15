@@ -22,9 +22,6 @@ class PaintDetailViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .white
 
-        self.title = name
-        self.navigationController?.navigationBar.titleTextAttributes = [.font: UIFont.init(name: "CourierNewPSMT", size: 30) as Any]
-
         paint.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(paint)
 

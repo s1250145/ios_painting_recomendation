@@ -13,7 +13,7 @@ class CreateObject {
     static func createLabel(title: String, size: CGFloat) -> UILabel {
         let label = UILabel(frame: .zero)
         label.text = title
-        label.font = UIFont.systemFont(ofSize: size)
+        label.font = UIFont(name: "Palatino-Roman", size: size)
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }
