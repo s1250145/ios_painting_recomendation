@@ -12,11 +12,14 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
+    var navView: UINavigationController?
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         window = UIWindow(frame: UIScreen.main.bounds)
-        window?.rootViewController = PaintCollectionViewController()
+        let firstVC = PaintCollectionViewController()
+        navView = UINavigationController(rootViewController: firstVC)
+        window?.rootViewController = navView
         window?.makeKeyAndVisible()
         return true
     }
