@@ -8,12 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		4B78EE8825105771000CFCFF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B78EE8725105771000CFCFF /* AppDelegate.swift */; };
-		4B78EE8A25105771000CFCFF /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B78EE8925105771000CFCFF /* ViewController.swift */; };
-		4B78EE8D25105771000CFCFF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4B78EE8B25105771000CFCFF /* Main.storyboard */; };
 		4B78EE8F25105773000CFCFF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4B78EE8E25105773000CFCFF /* Assets.xcassets */; };
 		4B78EE9225105773000CFCFF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4B78EE9025105773000CFCFF /* LaunchScreen.storyboard */; };
 		4B78EE9D25105773000CFCFF /* Paint_RecommendTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B78EE9C25105773000CFCFF /* Paint_RecommendTests.swift */; };
 		4B78EEA825105773000CFCFF /* Paint_RecommendUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B78EEA725105773000CFCFF /* Paint_RecommendUITests.swift */; };
+		4B78EEB6251059EE000CFCFF /* PaintCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B78EEB5251059EE000CFCFF /* PaintCollectionViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,8 +35,6 @@
 /* Begin PBXFileReference section */
 		4B78EE8425105771000CFCFF /* Paint_Recommend.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Paint_Recommend.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4B78EE8725105771000CFCFF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		4B78EE8925105771000CFCFF /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		4B78EE8C25105771000CFCFF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		4B78EE8E25105773000CFCFF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4B78EE9125105773000CFCFF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4B78EE9325105773000CFCFF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -47,6 +44,7 @@
 		4B78EEA325105773000CFCFF /* Paint_RecommendUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Paint_RecommendUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4B78EEA725105773000CFCFF /* Paint_RecommendUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Paint_RecommendUITests.swift; sourceTree = "<group>"; };
 		4B78EEA925105773000CFCFF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4B78EEB5251059EE000CFCFF /* PaintCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaintCollectionViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,8 +96,7 @@
 			isa = PBXGroup;
 			children = (
 				4B78EE8725105771000CFCFF /* AppDelegate.swift */,
-				4B78EE8925105771000CFCFF /* ViewController.swift */,
-				4B78EE8B25105771000CFCFF /* Main.storyboard */,
+				4B78EEB5251059EE000CFCFF /* PaintCollectionViewController.swift */,
 				4B78EE8E25105773000CFCFF /* Assets.xcassets */,
 				4B78EE9025105773000CFCFF /* LaunchScreen.storyboard */,
 				4B78EE9325105773000CFCFF /* Info.plist */,
@@ -231,7 +228,6 @@
 			files = (
 				4B78EE9225105773000CFCFF /* LaunchScreen.storyboard in Resources */,
 				4B78EE8F25105773000CFCFF /* Assets.xcassets in Resources */,
-				4B78EE8D25105771000CFCFF /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -256,8 +252,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4B78EE8A25105771000CFCFF /* ViewController.swift in Sources */,
 				4B78EE8825105771000CFCFF /* AppDelegate.swift in Sources */,
+				4B78EEB6251059EE000CFCFF /* PaintCollectionViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -293,14 +289,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		4B78EE8B25105771000CFCFF /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				4B78EE8C25105771000CFCFF /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		4B78EE9025105773000CFCFF /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
