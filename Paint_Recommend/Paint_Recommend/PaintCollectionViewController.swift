@@ -67,4 +67,10 @@ class PaintCollectionViewController: UIViewController, UICollectionViewDelegate,
         return CGSize(width: view.frame.width*0.475, height: 250 as CGFloat)
     }
 
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let vc = PaintDetailViewController()
+        vc.paint.image = UIImage(named: imageList[indexPath.row])
+        self.show(vc, sender: nil)
+    }
+
 }
