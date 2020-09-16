@@ -43,37 +43,9 @@ class PaintDetailViewController: UIViewController {
         let feelLabel = CreateObject.createLabel(title: "your feel?", size: 24)
         view.addSubview(feelLabel)
 
-        let loveBtn = UIButton(frame: CGRect(x: 0, y: 0, width: 48, height: 0))
-        loveBtn.setTitle("Love", for: .normal)
-        loveBtn.setTitleColor(.black, for: .normal)
-        loveBtn.setImage(UIImage(named: "Love"), for: .normal)
-        loveBtn.centerVertically()
-        loveBtn.translatesAutoresizingMaskIntoConstraints = false
-        view.addSubview(loveBtn)
-
-        let goodBtn = UIButton(frame: CGRect(x: 0, y: 0, width: 48, height: 0))
-        goodBtn.setTitle("Good", for: .normal)
-        goodBtn.setTitleColor(.black, for: .normal)
-        goodBtn.setImage(UIImage(named: "Good"), for: .normal)
-        goodBtn.centerVertically()
-        goodBtn.translatesAutoresizingMaskIntoConstraints = false
-        view.addSubview(goodBtn)
-
-        let sadBtn = UIButton(frame: CGRect(x: 0, y: 0, width: 48, height: 0))
-        sadBtn.setTitle("Sad", for: .normal)
-        sadBtn.setTitleColor(.black, for: .normal)
-        sadBtn.setImage(UIImage(named: "Sad"), for: .normal)
-        sadBtn.centerVertically()
-        sadBtn.translatesAutoresizingMaskIntoConstraints = false
-        view.addSubview(sadBtn)
-
-        let angerBtn = UIButton(frame: CGRect(x: 0, y: 0, width: 48, height: 0))
-        angerBtn.setTitle("Anger", for: .normal)
-        angerBtn.setTitleColor(.black, for: .normal)
-        angerBtn.setImage(UIImage(named: "Anger"), for: .normal)
-        angerBtn.centerVertically()
-        angerBtn.translatesAutoresizingMaskIntoConstraints = false
-        view.addSubview(angerBtn)
+        let likeButtons = InputButtons(frame: CGRect(x: 0, y: 0, width: 300, height: 80))
+        likeButtons.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(likeButtons)
 
         NSLayoutConstraint.activate([
             paint.centerXAnchor.constraint(equalTo: view.centerXAnchor),
@@ -88,15 +60,16 @@ class PaintDetailViewController: UIViewController {
             artistName.topAnchor.constraint(equalTo: artDate.bottomAnchor, constant: 20),
             artistName.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 20),
             artistBorn.topAnchor.constraint(equalTo: artistName.bottomAnchor, constant: 0),
-            artistBorn.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 20)
+            artistBorn.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 20),
+
+            likeLabel.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 20),
+            likeLabel.topAnchor.constraint(equalTo: artistBorn.bottomAnchor, constant: 20),
+            likeButtons.topAnchor.constraint(equalTo: likeLabel.bottomAnchor, constant: 10),
+            likeButtons.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            likeButtons.widthAnchor.constraint(equalToConstant: 300),
+            likeButtons.heightAnchor.constraint(equalToConstant: 80)
             ])
     }
 }
 
-extension UIButton {
-    func centerVertically() {
-        guard let imageSize = self.imageView?.image?.size else { return }
-        self.titleEdgeInsets.left = -imageSize.width * 1.75
-        self.titleEdgeInsets.bottom = -imageSize.width
-    }
-}
+
