@@ -47,6 +47,10 @@ class PaintDetailViewController: UIViewController {
         likeButtons.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(likeButtons)
 
+        let feelButtons = FeelingInputButtons(frame: CGRect(x: 0, y: 0, width: 300, height: 80))
+        feelButtons.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(feelButtons)
+
         NSLayoutConstraint.activate([
             paint.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             paint.topAnchor.constraint(equalTo: view.topAnchor, constant: 100),
@@ -64,10 +68,17 @@ class PaintDetailViewController: UIViewController {
 
             likeLabel.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 20),
             likeLabel.topAnchor.constraint(equalTo: artistBorn.bottomAnchor, constant: 20),
-            likeButtons.topAnchor.constraint(equalTo: likeLabel.bottomAnchor, constant: 10),
+            likeButtons.topAnchor.constraint(equalTo: likeLabel.bottomAnchor, constant: 5),
             likeButtons.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             likeButtons.widthAnchor.constraint(equalToConstant: 300),
-            likeButtons.heightAnchor.constraint(equalToConstant: 80)
+            likeButtons.heightAnchor.constraint(equalToConstant: 80),
+
+            feelLabel.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 20),
+            feelLabel.topAnchor.constraint(equalTo: likeButtons.bottomAnchor, constant: 8),
+            feelButtons.topAnchor.constraint(equalTo: feelLabel.bottomAnchor, constant: 5),
+            feelButtons.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            feelButtons.widthAnchor.constraint(equalToConstant: 300),
+            feelButtons.heightAnchor.constraint(equalToConstant: 80)
             ])
     }
 }
