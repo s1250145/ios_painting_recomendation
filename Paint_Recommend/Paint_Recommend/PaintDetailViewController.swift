@@ -37,6 +37,16 @@ class PaintDetailViewController: UIViewController {
         let artistBorn = CreateObject.createLabel(title: born+", "+active, size: 20)
         view.addSubview(artistBorn)
 
+        let badButton = UIImageView(frame: .zero)
+        badButton.image = UIImage(named: "Bad")
+        badButton.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(badButton)
+
+        let badBtn = UIButton(frame: .zero)
+        badBtn.setBackgroundImage(UIImage(named: "Bad"), for: .normal)
+        badBtn.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(badBtn)
+
         NSLayoutConstraint.activate([
             paint.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             paint.topAnchor.constraint(equalTo: view.topAnchor, constant: 100),
@@ -50,7 +60,10 @@ class PaintDetailViewController: UIViewController {
             artistName.topAnchor.constraint(equalTo: artDate.bottomAnchor, constant: 20),
             artistName.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 20),
             artistBorn.topAnchor.constraint(equalTo: artistName.bottomAnchor, constant: 0),
-            artistBorn.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 20)
+            artistBorn.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 20),
+
+            badBtn.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 20),
+            badBtn.topAnchor.constraint(equalTo: artistBorn.bottomAnchor, constant: 10)
             ])
     }
 }
