@@ -15,6 +15,7 @@
 		4B78EE9D25105773000CFCFF /* Paint_RecommendTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B78EE9C25105773000CFCFF /* Paint_RecommendTests.swift */; };
 		4B78EEA825105773000CFCFF /* Paint_RecommendUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B78EEA725105773000CFCFF /* Paint_RecommendUITests.swift */; };
 		4B78EEB6251059EE000CFCFF /* PaintCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B78EEB5251059EE000CFCFF /* PaintCollectionViewController.swift */; };
+		4B994EC82511AFB400EA1CAD /* GridLayoutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B994EC72511AFB400EA1CAD /* GridLayoutView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +50,7 @@
 		4B78EEA725105773000CFCFF /* Paint_RecommendUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Paint_RecommendUITests.swift; sourceTree = "<group>"; };
 		4B78EEA925105773000CFCFF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4B78EEB5251059EE000CFCFF /* PaintCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaintCollectionViewController.swift; sourceTree = "<group>"; };
+		4B994EC72511AFB400EA1CAD /* GridLayoutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GridLayoutView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,6 +105,7 @@
 				4B78EEB5251059EE000CFCFF /* PaintCollectionViewController.swift */,
 				4B1BB96D25106B11000EF7AF /* PaintDetailViewController.swift */,
 				4B1BB96F2510761B000EF7AF /* CreateObject.swift */,
+				4B994EC72511AFB400EA1CAD /* GridLayoutView.swift */,
 				4B78EE8E25105773000CFCFF /* Assets.xcassets */,
 				4B78EE9025105773000CFCFF /* LaunchScreen.storyboard */,
 				4B78EE9325105773000CFCFF /* Info.plist */,
@@ -259,6 +262,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4B1BB9702510761B000EF7AF /* CreateObject.swift in Sources */,
+				4B994EC82511AFB400EA1CAD /* GridLayoutView.swift in Sources */,
 				4B78EE8825105771000CFCFF /* AppDelegate.swift in Sources */,
 				4B78EEB6251059EE000CFCFF /* PaintCollectionViewController.swift in Sources */,
 				4B1BB96E25106B11000EF7AF /* PaintDetailViewController.swift in Sources */,
