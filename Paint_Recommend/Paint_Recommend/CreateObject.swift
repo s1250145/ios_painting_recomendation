@@ -22,8 +22,12 @@ class CreateObject {
         let button = UIButton(frame: CGRect(x: 0, y: 0, width: 30, height: 30))
         button.setTitle(title, for: .normal)
         button.setTitleColor(UIColor(red: 187/256, green: 188/256, blue: 222/256, alpha: 1.0), for: .normal)
+        button.titleLabel?.font = UIFont.systemFont(ofSize: 15)
         button.setImage(UIImage(named: title)?.withRenderingMode(.alwaysTemplate), for: .normal)
         button.tintColor = UIColor(red: 187/256, green: 188/256, blue: 222/256, alpha: 1.0) // disable button color
+        button.imageView?.contentMode = .scaleAspectFit
+        button.contentHorizontalAlignment = .fill
+        button.contentVerticalAlignment = .fill
         button.centerVertically()
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
@@ -33,8 +37,8 @@ class CreateObject {
 extension UIButton {
     func centerVertically() {
         guard let imageSize = self.imageView?.image?.size else { return }
-        self.imageEdgeInsets.bottom = -imageSize.width * 0.75
-        self.titleEdgeInsets.left = -imageSize.width * 1.25
-        self.titleEdgeInsets.bottom = -imageSize.width * 1.75
+        self.titleEdgeInsets.left = -imageSize.width
+        self.titleEdgeInsets.bottom = -imageSize.width * 1.5
+        self.contentEdgeInsets = UIEdgeInsets(top: -15, left: -15, bottom: -15, right: -15)
     }
 }

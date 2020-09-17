@@ -9,6 +9,7 @@
 import UIKit
 
 class PaintDetailViewController: UIViewController {
+    let disable = UIColor(red: 187/256, green: 188/256, blue: 222/256, alpha: 1.0)
 
     var paint = UIImageView(frame: .zero)
 
@@ -43,49 +44,39 @@ class PaintDetailViewController: UIViewController {
         let artistName = CreateObject.createLabel(title: artist, size: 28)
         view.addSubview(artistName)
 
-        let artistBorn = CreateObject.createLabel(title: born+", "+active, size: 20)
+        let artistBorn = CreateObject.createLabel(title: born+", "+active, size: 18)
         view.addSubview(artistBorn)
 
         // input like value
-        let likeLabel = CreateObject.createLabel(title: "you like this?", size: 24)
+        let likeLabel = CreateObject.createLabel(title: "you like this?", size: 22)
         view.addSubview(likeLabel)
-
+        view.addSubview(love)
+        view.addSubview(good)
+        view.addSubview(bad)
+        view.addSubview(dislike)
         love.addTarget(self, action: #selector(didTappedLikeButton(_:)), for: .touchUpInside)
         good.addTarget(self, action: #selector(didTappedLikeButton(_:)), for: .touchUpInside)
         bad.addTarget(self, action: #selector(didTappedLikeButton(_:)), for: .touchUpInside)
         dislike.addTarget(self, action: #selector(didTappedLikeButton(_:)), for: .touchUpInside)
 
-        let likeButtons = GridLayoutView(frame: CGRect(x: 0, y: 0, width: 242, height: 60))
-        likeButtons.addSubview(love)
-        likeButtons.addSubview(good)
-        likeButtons.addSubview(bad)
-        likeButtons.addSubview(dislike)
-        likeButtons.translatesAutoresizingMaskIntoConstraints = false
-        view.addSubview(likeButtons)
-
         // input feeling value
-        let feelLabel = CreateObject.createLabel(title: "your feel?", size: 24)
+        let feelLabel = CreateObject.createLabel(title: "your feel?", size: 22)
         view.addSubview(feelLabel)
-
-        happy.addTarget(self, action: #selector(didTappedLikeButton(_:)), for: .touchUpInside)
-        sad.addTarget(self, action: #selector(didTappedLikeButton(_:)), for: .touchUpInside)
-        anger.addTarget(self, action: #selector(didTappedLikeButton(_:)), for: .touchUpInside)
-        move.addTarget(self, action: #selector(didTappedLikeButton(_:)), for: .touchUpInside)
-
-        let feelButtons = GridLayoutView(frame: CGRect(x: 0, y: 0, width: 242, height: 60))
-        feelButtons.addSubview(happy)
-        feelButtons.addSubview(sad)
-        feelButtons.addSubview(anger)
-        feelButtons.addSubview(move)
-        feelButtons.translatesAutoresizingMaskIntoConstraints = false
-        view.addSubview(feelButtons)
+        view.addSubview(happy)
+        view.addSubview(sad)
+        view.addSubview(anger)
+        view.addSubview(move)
+        happy.addTarget(self, action: #selector(didTappedFeelButton(_:)), for: .touchUpInside)
+        sad.addTarget(self, action: #selector(didTappedFeelButton(_:)), for: .touchUpInside)
+        anger.addTarget(self, action: #selector(didTappedFeelButton(_:)), for: .touchUpInside)
+        move.addTarget(self, action: #selector(didTappedFeelButton(_:)), for: .touchUpInside)
 
         NSLayoutConstraint.activate([
             paint.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             paint.topAnchor.constraint(equalTo: view.topAnchor, constant: 100),
             paint.heightAnchor.constraint(equalToConstant: 400),
             paint.widthAnchor.constraint(equalToConstant: view.frame.width*0.95),
-            artTitle.topAnchor.constraint(equalTo: paint.bottomAnchor, constant: 40),
+            artTitle.topAnchor.constraint(equalTo: paint.bottomAnchor, constant: 20),
             artTitle.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 20),
             artDate.topAnchor.constraint(equalTo: artTitle.bottomAnchor, constant: 0),
             artDate.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 20),
@@ -97,29 +88,41 @@ class PaintDetailViewController: UIViewController {
 
             likeLabel.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 20),
             likeLabel.topAnchor.constraint(equalTo: artistBorn.bottomAnchor, constant: 20),
-            likeButtons.topAnchor.constraint(equalTo: likeLabel.bottomAnchor, constant: 5),
-            likeButtons.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            likeButtons.widthAnchor.constraint(equalToConstant: 242),
-            likeButtons.heightAnchor.constraint(equalToConstant: 60),
+            love.topAnchor.constraint(equalTo: likeLabel.bottomAnchor, constant: 15),
+            love.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 40),
+            good.topAnchor.constraint(equalTo: likeLabel.bottomAnchor, constant: 15),
+            good.leftAnchor.constraint(equalTo: love.rightAnchor, constant: 20),
+            bad.topAnchor.constraint(equalTo: likeLabel.bottomAnchor, constant: 15),
+            bad.leftAnchor.constraint(equalTo: good.rightAnchor, constant: 20),
+            dislike.topAnchor.constraint(equalTo: likeLabel.bottomAnchor, constant: 15),
+            dislike.leftAnchor.constraint(equalTo: bad.rightAnchor, constant: 20),
 
             feelLabel.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 20),
-            feelLabel.topAnchor.constraint(equalTo: likeButtons.bottomAnchor, constant: 5),
-            feelButtons.topAnchor.constraint(equalTo: feelLabel.bottomAnchor, constant: 5),
-            feelButtons.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            feelButtons.widthAnchor.constraint(equalToConstant: 242),
-            feelButtons.heightAnchor.constraint(equalToConstant: 60)
+            feelLabel.topAnchor.constraint(equalTo: love.bottomAnchor, constant: 40),
+            happy.topAnchor.constraint(equalTo: feelLabel.bottomAnchor, constant: 15),
+            happy.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 40),
+            sad.topAnchor.constraint(equalTo: feelLabel.bottomAnchor, constant: 15),
+            sad.leftAnchor.constraint(equalTo: happy.rightAnchor, constant: 20),
+            anger.topAnchor.constraint(equalTo: feelLabel.bottomAnchor, constant: 15),
+            anger.leftAnchor.constraint(equalTo: sad.rightAnchor, constant: 20),
+            move.topAnchor.constraint(equalTo: feelLabel.bottomAnchor, constant: 15),
+            move.leftAnchor.constraint(equalTo: anger.rightAnchor, constant: 20),
             ])
     }
 
     @objc func didTappedLikeButton(_ sender: UIButton) {
-        print("tapped")
-        setDisableColorAllButton()
+        setDisableColorAllLikeButton()
         sender.tintColor = .black
-        sender.setTitleColor(UIColor(red: 187/256, green: 188/256, blue: 222/256, alpha: 1.0), for: .normal)
+        sender.setTitleColor(.black, for: .normal)
     }
 
-    func setDisableColorAllButton() {
-        let disable = UIColor(red: 187/256, green: 188/256, blue: 222/256, alpha: 1.0)
+    @objc func didTappedFeelButton(_ sender: UIButton) {
+        setDisableColorAllFeelButton()
+        sender.tintColor = .black
+        sender.setTitleColor(.black, for: .normal)
+    }
+
+    func setDisableColorAllLikeButton() {
         love.tintColor = disable
         love.setTitleColor(disable, for: .normal)
 
@@ -131,7 +134,9 @@ class PaintDetailViewController: UIViewController {
 
         dislike.tintColor = disable
         dislike.setTitleColor(disable, for: .normal)
+    }
 
+    func setDisableColorAllFeelButton() {
         happy.tintColor = disable
         happy.setTitleColor(disable, for: .normal)
 
