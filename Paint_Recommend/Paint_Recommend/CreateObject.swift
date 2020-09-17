@@ -21,8 +21,9 @@ class CreateObject {
     static func inputButton(title: String) -> UIButton {
         let button = UIButton(frame: CGRect(x: 0, y: 0, width: 30, height: 30))
         button.setTitle(title, for: .normal)
-        button.setTitleColor(.black, for: .normal)
-        button.setImage(UIImage(named: title), for: .normal)
+        button.setTitleColor(UIColor(red: 187/256, green: 188/256, blue: 222/256, alpha: 1.0), for: .normal)
+        button.setImage(UIImage(named: title)?.withRenderingMode(.alwaysTemplate), for: .normal)
+        button.tintColor = UIColor(red: 187/256, green: 188/256, blue: 222/256, alpha: 1.0)
         button.centerVertically()
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
