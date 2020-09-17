@@ -23,7 +23,7 @@ class CreateObject {
         button.setTitle(title, for: .normal)
         button.setTitleColor(UIColor(red: 187/256, green: 188/256, blue: 222/256, alpha: 1.0), for: .normal)
         button.setImage(UIImage(named: title)?.withRenderingMode(.alwaysTemplate), for: .normal)
-        button.tintColor = UIColor(red: 187/256, green: 188/256, blue: 222/256, alpha: 1.0)
+        button.tintColor = UIColor(red: 187/256, green: 188/256, blue: 222/256, alpha: 1.0) // disable button color
         button.centerVertically()
         button.translatesAutoresizingMaskIntoConstraints = false
         return button

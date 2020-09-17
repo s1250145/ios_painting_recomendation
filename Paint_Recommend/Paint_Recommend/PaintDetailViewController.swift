@@ -18,6 +18,15 @@ class PaintDetailViewController: UIViewController {
     var born: String = "Japan"
     var active: String = "1998-2028"
 
+    let love = CreateObject.inputButton(title: "Love")
+    let good = CreateObject.inputButton(title: "Good")
+    let bad = CreateObject.inputButton(title: "Bad")
+    let dislike = CreateObject.inputButton(title: "Dislike")
+    let happy = CreateObject.inputButton(title: "Happy")
+    let sad = CreateObject.inputButton(title: "Sad")
+    let anger = CreateObject.inputButton(title: "Anger")
+    let move = CreateObject.inputButton(title: "Move")
+
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
@@ -41,10 +50,10 @@ class PaintDetailViewController: UIViewController {
         let likeLabel = CreateObject.createLabel(title: "you like this?", size: 24)
         view.addSubview(likeLabel)
 
-        let love = CreateObject.inputButton(title: "Love")
-        let good = CreateObject.inputButton(title: "Good")
-        let bad = CreateObject.inputButton(title: "Bad")
-        let dislike = CreateObject.inputButton(title: "Dislike")
+        love.addTarget(self, action: #selector(didTappedLikeButton(_:)), for: .touchUpInside)
+        good.addTarget(self, action: #selector(didTappedLikeButton(_:)), for: .touchUpInside)
+        bad.addTarget(self, action: #selector(didTappedLikeButton(_:)), for: .touchUpInside)
+        dislike.addTarget(self, action: #selector(didTappedLikeButton(_:)), for: .touchUpInside)
 
         let likeButtons = GridLayoutView(frame: CGRect(x: 0, y: 0, width: 242, height: 60))
         likeButtons.addSubview(love)
@@ -58,10 +67,10 @@ class PaintDetailViewController: UIViewController {
         let feelLabel = CreateObject.createLabel(title: "your feel?", size: 24)
         view.addSubview(feelLabel)
 
-        let happy = CreateObject.inputButton(title: "Happy")
-        let sad = CreateObject.inputButton(title: "Sad")
-        let anger = CreateObject.inputButton(title: "Anger")
-        let move = CreateObject.inputButton(title: "Move")
+        happy.addTarget(self, action: #selector(didTappedLikeButton(_:)), for: .touchUpInside)
+        sad.addTarget(self, action: #selector(didTappedLikeButton(_:)), for: .touchUpInside)
+        anger.addTarget(self, action: #selector(didTappedLikeButton(_:)), for: .touchUpInside)
+        move.addTarget(self, action: #selector(didTappedLikeButton(_:)), for: .touchUpInside)
 
         let feelButtons = GridLayoutView(frame: CGRect(x: 0, y: 0, width: 242, height: 60))
         feelButtons.addSubview(happy)
@@ -100,5 +109,39 @@ class PaintDetailViewController: UIViewController {
             feelButtons.widthAnchor.constraint(equalToConstant: 242),
             feelButtons.heightAnchor.constraint(equalToConstant: 60)
             ])
+    }
+
+    @objc func didTappedLikeButton(_ sender: UIButton) {
+        print("tapped")
+        setDisableColorAllButton()
+        sender.tintColor = .black
+        sender.setTitleColor(UIColor(red: 187/256, green: 188/256, blue: 222/256, alpha: 1.0), for: .normal)
+    }
+
+    func setDisableColorAllButton() {
+        let disable = UIColor(red: 187/256, green: 188/256, blue: 222/256, alpha: 1.0)
+        love.tintColor = disable
+        love.setTitleColor(disable, for: .normal)
+
+        good.tintColor = disable
+        good.setTitleColor(disable, for: .normal)
+
+        bad.tintColor = disable
+        bad.setTitleColor(disable, for: .normal)
+
+        dislike.tintColor = disable
+        dislike.setTitleColor(disable, for: .normal)
+
+        happy.tintColor = disable
+        happy.setTitleColor(disable, for: .normal)
+
+        sad.tintColor = disable
+        sad.setTitleColor(disable, for: .normal)
+
+        anger.tintColor = disable
+        anger.setTitleColor(disable, for: .normal)
+
+        move.tintColor = disable
+        move.setTitleColor(disable, for: .normal)
     }
 }
