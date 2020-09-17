@@ -17,7 +17,7 @@ class InputButtons: UIView {
         let bad = CreateObject.inputButton(title: "Bad")
         let dislike = CreateObject.inputButton(title: "Dislike")
 
-        let likeButtons = GridLayoutView()
+        let likeButtons = GridLayoutView(frame: CGRect(x: 0, y: 0, width: 242, height: 70))
         likeButtons.backgroundColor = .white
         likeButtons.gridSize = 4
         likeButtons.addSubview(love)
@@ -30,7 +30,8 @@ class InputButtons: UIView {
         NSLayoutConstraint.activate([
             likeButtons.centerXAnchor.constraint(equalTo: self.centerXAnchor),
             likeButtons.widthAnchor.constraint(equalToConstant: 300),
-            likeButtons.heightAnchor.constraint(equalToConstant: 70)
+            likeButtons.heightAnchor.constraint(equalToConstant: 70),
+            love.heightAnchor.constraint(equalToConstant: 70)
             ])
     }
 }

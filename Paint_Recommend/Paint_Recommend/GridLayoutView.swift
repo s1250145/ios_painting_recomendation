@@ -10,11 +10,13 @@ import UIKit
 
 class GridLayoutView: UIView {
     var gridSize: Int = 4
-    var borderWidth: CGFloat = 5
+    var borderWidth: CGFloat = 20
     var insets: UIEdgeInsets = .zero
 
     override func layoutSubviews() {
         super.layoutSubviews()
+        
+        self.backgroundColor = .white
 
         let margin = borderWidth
 

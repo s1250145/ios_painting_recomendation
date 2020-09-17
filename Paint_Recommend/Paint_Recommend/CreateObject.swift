@@ -19,7 +19,7 @@ class CreateObject {
     }
 
     static func inputButton(title: String) -> UIButton {
-        let button = UIButton(frame: CGRect(x: 0, y: 0, width: 48, height: 0))
+        let button = UIButton(frame: CGRect(x: 0, y: 0, width: 30, height: 30))
         button.setTitle(title, for: .normal)
         button.setTitleColor(.black, for: .normal)
         button.setImage(UIImage(named: title), for: .normal)
@@ -32,7 +32,8 @@ class CreateObject {
 extension UIButton {
     func centerVertically() {
         guard let imageSize = self.imageView?.image?.size else { return }
-        self.titleEdgeInsets.left = -imageSize.width * 1.75
-        self.titleEdgeInsets.bottom = -imageSize.width
+        self.imageEdgeInsets.bottom = -imageSize.width * 0.75
+        self.titleEdgeInsets.left = -imageSize.width * 1.25
+        self.titleEdgeInsets.bottom = -imageSize.width * 1.75
     }
 }

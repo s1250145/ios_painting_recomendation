@@ -37,17 +37,37 @@ class PaintDetailViewController: UIViewController {
         let artistBorn = CreateObject.createLabel(title: born+", "+active, size: 20)
         view.addSubview(artistBorn)
 
+        // input like value
         let likeLabel = CreateObject.createLabel(title: "you like this?", size: 24)
         view.addSubview(likeLabel)
 
-        let feelLabel = CreateObject.createLabel(title: "your feel?", size: 24)
-        view.addSubview(feelLabel)
+        let love = CreateObject.inputButton(title: "Love")
+        let good = CreateObject.inputButton(title: "Good")
+        let bad = CreateObject.inputButton(title: "Bad")
+        let dislike = CreateObject.inputButton(title: "Dislike")
 
-        let likeButtons = InputButtons(frame: CGRect(x: 0, y: 0, width: 300, height: 80))
+        let likeButtons = GridLayoutView(frame: CGRect(x: 0, y: 0, width: 242, height: 60))
+        likeButtons.addSubview(love)
+        likeButtons.addSubview(good)
+        likeButtons.addSubview(bad)
+        likeButtons.addSubview(dislike)
         likeButtons.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(likeButtons)
 
-        let feelButtons = FeelingInputButtons(frame: CGRect(x: 0, y: 0, width: 300, height: 80))
+        // input feeling value
+        let feelLabel = CreateObject.createLabel(title: "your feel?", size: 24)
+        view.addSubview(feelLabel)
+
+        let happy = CreateObject.inputButton(title: "Happy")
+        let sad = CreateObject.inputButton(title: "Sad")
+        let anger = CreateObject.inputButton(title: "Anger")
+        let move = CreateObject.inputButton(title: "Move")
+
+        let feelButtons = GridLayoutView(frame: CGRect(x: 0, y: 0, width: 242, height: 60))
+        feelButtons.addSubview(happy)
+        feelButtons.addSubview(sad)
+        feelButtons.addSubview(anger)
+        feelButtons.addSubview(move)
         feelButtons.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(feelButtons)
 
@@ -70,15 +90,15 @@ class PaintDetailViewController: UIViewController {
             likeLabel.topAnchor.constraint(equalTo: artistBorn.bottomAnchor, constant: 20),
             likeButtons.topAnchor.constraint(equalTo: likeLabel.bottomAnchor, constant: 5),
             likeButtons.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            likeButtons.widthAnchor.constraint(equalToConstant: 300),
-            likeButtons.heightAnchor.constraint(equalToConstant: 80),
+            likeButtons.widthAnchor.constraint(equalToConstant: 242),
+            likeButtons.heightAnchor.constraint(equalToConstant: 60),
 
             feelLabel.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 20),
-            feelLabel.topAnchor.constraint(equalTo: likeButtons.bottomAnchor, constant: 8),
+            feelLabel.topAnchor.constraint(equalTo: likeButtons.bottomAnchor, constant: 5),
             feelButtons.topAnchor.constraint(equalTo: feelLabel.bottomAnchor, constant: 5),
             feelButtons.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            feelButtons.widthAnchor.constraint(equalToConstant: 300),
-            feelButtons.heightAnchor.constraint(equalToConstant: 80)
+            feelButtons.widthAnchor.constraint(equalToConstant: 242),
+            feelButtons.heightAnchor.constraint(equalToConstant: 60)
             ])
     }
 }
