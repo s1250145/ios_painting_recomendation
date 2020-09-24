@@ -15,13 +15,26 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var navView: UINavigationController?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        let client = APIClient()
-        client.request()
         window = UIWindow(frame: UIScreen.main.bounds)
-        let firstVC = PaintCollectionViewController()
-        navView = UINavigationController(rootViewController: firstVC)
-        window?.rootViewController = navView
-        window?.makeKeyAndVisible()
+        let isBefore = UserDefaults.standard.bool(forKey: "isBefore")
+        if(isBefore == false) {
+            UserDefaults.standard.set(true, forKey: "isBefore")
+            let client = APIClient()
+            client.request(closure: { (response) in
+                JSONEncoder().keyEncodingStrategy = .convertToSnakeCase
+                guard let data = try? JSONEncoder().encode(response) else { return }
+                UserDefaults.standard.set(data, forKey: "PaintDataSet")
+            })
+            let firstVC = PaintCollectionViewController()
+            navView = UINavigationController(rootViewController: firstVC)
+            window?.rootViewController = navView
+            window?.makeKeyAndVisible()
+        } else {
+            let firstVC = PaintCollectionViewController()
+            navView = UINavigationController(rootViewController: firstVC)
+            window?.rootViewController = navView
+            window?.makeKeyAndVisible()
+        }
         return true
     }
 

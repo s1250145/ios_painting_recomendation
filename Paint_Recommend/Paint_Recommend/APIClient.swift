@@ -10,7 +10,7 @@ import Foundation
 import SwiftyJSON
 
 class APIClient {
-    func request() {
+    func request(closure: @escaping([PaintData]) -> ()) {
         var paintDataSet = [PaintData]()
         guard let url = URL(string: "http://127.0.0.1:5000/") else { return }
         var request = URLRequest(url: url)
@@ -22,6 +22,7 @@ class APIClient {
                 let paint = PaintData(id: arr["id"].intValue, title: arr["title"].stringValue, date: arr["date"].stringValue, artist: arr["artist"].stringValue, born: arr["born"].stringValue, age: arr["age"].stringValue, imageName: arr["imageName"].stringValue, image: arr["image"].stringValue)
                 paintDataSet.append(paint)
             }
+            closure(paintDataSet)
         }
         task.resume()
     }
