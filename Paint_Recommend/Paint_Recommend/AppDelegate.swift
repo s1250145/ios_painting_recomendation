@@ -15,6 +15,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var navView: UINavigationController?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        let client = APIClient()
+        client.request()
         window = UIWindow(frame: UIScreen.main.bounds)
         let firstVC = PaintCollectionViewController()
         navView = UINavigationController(rootViewController: firstVC)
