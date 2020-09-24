@@ -1,5 +1,5 @@
 //
-//  CallAction.swift
+//  APIClient.swift
 //  Paint_Recommend
 //
 //  Created by 山口瑞歩 on 2020/09/24.
@@ -7,4 +7,3 @@
 //
 
 import Foundation
-import SwiftyJSON

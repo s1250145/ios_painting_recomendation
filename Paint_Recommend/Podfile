@@ -7,7 +7,6 @@ target 'Paint_Recommend' do
 
   # Pods for Paint_Recommend
   pod 'SwiftyJSON'
-  pod 'APIKit', '~> 5.0'
 
   target 'Paint_RecommendTests' do
     inherit! :search_paths
