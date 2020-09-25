@@ -10,6 +10,7 @@ import UIKit
 
 class PaintCollectionViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UINavigationControllerDelegate {
     let imageList = ["img1", "img2", "img3", "img4", "img5", "img6", "img7"]
+    var paintDataSet = [PaintData]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,6 +22,8 @@ class PaintCollectionViewController: UIViewController, UICollectionViewDelegate,
 
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
         navigationItem.backBarButtonItem?.tintColor = .black
+
+        paintDataSet = PaintAction.getPaintDataSet()
 
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
@@ -43,13 +46,13 @@ class PaintCollectionViewController: UIViewController, UICollectionViewDelegate,
     }
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return imageList.count
+        return paintDataSet.count
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Paint", for: indexPath as IndexPath)
         let paint = UIImageView(frame: .zero)
-        paint.image = UIImage(named: imageList[indexPath.row])
+        paint.image = paintDataSet[indexPath.row].image.b64ToImage
         paint.translatesAutoresizingMaskIntoConstraints = false
 
         cell.contentView.addSubview(paint)
@@ -69,8 +72,21 @@ class PaintCollectionViewController: UIViewController, UICollectionViewDelegate,
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let vc = PaintDetailViewController()
-        vc.paint.image = UIImage(named: imageList[indexPath.row])
+        vc.paint.image = paintDataSet[indexPath.row].image.b64ToImage
         self.show(vc, sender: nil)
     }
+}
 
+extension String {
+    private func base64ToImage(imageString: String) -> UIImage? {
+        let decodeBase64: NSData? = NSData(base64Encoded: imageString, options: NSData.Base64DecodingOptions.ignoreUnknownCharacters)
+        if decodeBase64 != nil {
+            let image = UIImage(data: decodeBase64! as Data)
+            return image
+        }
+        return nil
+    }
+    var b64ToImage: UIImage? {
+        return base64ToImage(imageString: self)
+    }
 }
