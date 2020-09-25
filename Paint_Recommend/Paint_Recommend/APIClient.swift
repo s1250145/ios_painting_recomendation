@@ -28,11 +28,9 @@ extension Requestable {
 }
 
 class APIClient {
-    func request(closure: @escaping([PaintData]) -> ()) {
+    func request(_ requestable: Requestable, closure: @escaping([PaintData]) -> ()) {
         var paintDataSet = [PaintData]()
-        guard let url = URL(string: "http://127.0.0.1:5000/") else { return }
-        var request = URLRequest(url: url)
-        request.httpMethod = "GET"
+        guard let request = requestable.urlRequest else { return }
         let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
             guard let data = data else { return }
             let json = JSON(data)
@@ -55,4 +53,18 @@ struct PaintData: Codable {
     var age = ""
     var imageName = ""
     var image = ""
+}
+
+struct PaintDataAPIRequest: Requestable {
+    var url: String {
+        return "http://127.0.0.1:5000/"
+    }
+
+    var httpMethod: String {
+        return "GET"
+    }
+
+    var headers: [String : String] {
+        return [:]
+    }
 }

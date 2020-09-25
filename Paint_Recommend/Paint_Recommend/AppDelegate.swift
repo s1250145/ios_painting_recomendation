@@ -20,7 +20,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         if(isBefore == false) {
             UserDefaults.standard.set(true, forKey: "isBefore")
             let client = APIClient()
-            client.request(closure: { (response) in
+            client.request(PaintDataAPIRequest.self as! Requestable, closure: { (response) in
                 JSONEncoder().keyEncodingStrategy = .convertToSnakeCase
                 guard let data = try? JSONEncoder().encode(response) else { return }
                 UserDefaults.standard.set(data, forKey: "PaintDataSet")
