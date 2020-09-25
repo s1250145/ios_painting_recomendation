@@ -9,6 +9,24 @@
 import Foundation
 import SwiftyJSON
 
+protocol Requestable {
+    var url: String { get }
+    var httpMethod: String { get }
+    var headers: [String: String] { get }
+}
+
+extension Requestable {
+    var urlRequest: URLRequest? {
+        guard let url = URL(string: url) else { return nil }
+        var request = URLRequest(url: url)
+        request.httpMethod = httpMethod
+        headers.forEach { key, value in
+            request.addValue(value, forHTTPHeaderField: key)
+        }
+        return request
+    }
+}
+
 class APIClient {
     func request(closure: @escaping([PaintData]) -> ()) {
         var paintDataSet = [PaintData]()
