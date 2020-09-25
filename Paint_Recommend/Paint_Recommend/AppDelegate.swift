@@ -25,6 +25,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                     JSONEncoder().keyEncodingStrategy = .convertToSnakeCase
                     guard let data = try? JSONEncoder().encode(model) else { return }
                     UserDefaults.standard.set(data, forKey: "PaintDataSet")
+
+                    let firstVC = PaintCollectionViewController()
+                    self.navView = UINavigationController(rootViewController: firstVC)
+                    self.window?.rootViewController = self.navView
+                    self.window?.makeKeyAndVisible()
+                    
                 case let .failure(error):
                     switch error {
                     case let .server(status):
@@ -38,10 +44,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                     }
                 }
             }
-            let firstVC = PaintCollectionViewController()
-            navView = UINavigationController(rootViewController: firstVC)
-            window?.rootViewController = navView
-            window?.makeKeyAndVisible()
         } else {
             let firstVC = PaintCollectionViewController()
             navView = UINavigationController(rootViewController: firstVC)

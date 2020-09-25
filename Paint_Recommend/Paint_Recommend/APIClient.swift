@@ -117,8 +117,8 @@ struct PaintDataAPIRequest: Requestable {
 // 1枚の絵画の評価情報を保持する構造体
 struct PaintEvaluationData {
     var imageName = ""
-    var like = 0
-    var feel = 0
+    var like: Int
+    var feel: Double
 }
 
 // おすすめ順の絵画のデータセットを取得するAPIリクエスト(POST)

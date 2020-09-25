@@ -8,16 +8,16 @@
 
 import UIKit
 
-class PaintDetailViewController: UIViewController {
+class PaintDetailViewController: UIViewController, UINavigationControllerDelegate {
     let disable = UIColor(red: 187/256, green: 188/256, blue: 222/256, alpha: 1.0)
 
     var paint = UIImageView(frame: .zero)
 
-    var name: String = "Unknown"
-    var date: String = "2021"
-    var artist: String = "mixufo"
-    var born: String = "Japan"
-    var age: String = "1998-2028"
+    var name: String = ""
+    var date: String = ""
+    var artist: String = ""
+    var born: String = ""
+    var age: String = ""
 
     let love = CreateObject.inputButton(title: "Love")
     let good = CreateObject.inputButton(title: "Good")
@@ -28,8 +28,15 @@ class PaintDetailViewController: UIViewController {
     let anger = CreateObject.inputButton(title: "Anger")
     let move = CreateObject.inputButton(title: "Move")
 
+    var evaluationCount = 0
+    var tappedButton = ""
+
+    var paintEvaluationData = [PaintEvaluationData]()
+
     override func viewDidLoad() {
         super.viewDidLoad()
+        navigationController?.delegate = self
+
         view.backgroundColor = .white
 
         paint.translatesAutoresizingMaskIntoConstraints = false
@@ -110,6 +117,38 @@ class PaintDetailViewController: UIViewController {
             ])
     }
 
+    private func navigatoinController(_ navigationController: UINavigationController, willShow viewController: UIViewController, animated: Bool) {
+        if viewController is PaintCollectionViewController {
+            let evaluationData = PaintEvaluationData(imageName: "", like: 10, feel: 0.25)
+            paintEvaluationData.append(evaluationData)
+            evaluationCount += 1
+            if evaluationCount >= 4 {
+                var request = PaintEvaluationDataAPIRequest()
+                request.evaluations = paintEvaluationData
+                APIClient().request(request) { result in
+                    switch(result) {
+                    case let .success(model):
+                        // 絵画の表示順を変更
+                        JSONEncoder().keyEncodingStrategy = .convertToSnakeCase
+                        guard let data = try? JSONEncoder().encode(model) else { return }
+                        UserDefaults.standard.set(data, forKey: "PaintDataSet")
+                    case let .failure(error):
+                        switch error {
+                        case let .server(status):
+                            print("Error status code: \(status)")
+                        case .noResponse:
+                            print("Error no response")
+                        case let .unknown(e):
+                            print("Error unknown \(e)")
+                        default:
+                            print("Error \(error)")
+                        }
+                    }
+                }
+            }
+        }
+    }
+
     @objc func didTappedLikeButton(_ sender: UIButton) {
         setDisableColorAllLikeButton()
         sender.tintColor = .black
@@ -120,6 +159,7 @@ class PaintDetailViewController: UIViewController {
         setDisableColorAllFeelButton()
         sender.tintColor = .black
         sender.setTitleColor(.black, for: .normal)
+        tappedButton = sender.currentTitle!
     }
 
     func setDisableColorAllLikeButton() {

@@ -9,7 +9,6 @@
 import UIKit
 
 class PaintCollectionViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UINavigationControllerDelegate {
-    let imageList = ["img1", "img2", "img3", "img4", "img5", "img6", "img7"]
     var paintDataSet = [PaintData]()
 
     override func viewDidLoad() {
