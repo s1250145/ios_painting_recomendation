@@ -17,7 +17,7 @@ class PaintDetailViewController: UIViewController {
     var date: String = "2021"
     var artist: String = "mixufo"
     var born: String = "Japan"
-    var active: String = "1998-2028"
+    var age: String = "1998-2028"
 
     let love = CreateObject.inputButton(title: "Love")
     let good = CreateObject.inputButton(title: "Good")
@@ -44,7 +44,7 @@ class PaintDetailViewController: UIViewController {
         let artistName = CreateObject.createLabel(title: artist, size: 28)
         view.addSubview(artistName)
 
-        let artistBorn = CreateObject.createLabel(title: born+", "+active, size: 18)
+        let artistBorn = CreateObject.createLabel(title: born+", "+age, size: 18)
         view.addSubview(artistBorn)
 
         // input like value

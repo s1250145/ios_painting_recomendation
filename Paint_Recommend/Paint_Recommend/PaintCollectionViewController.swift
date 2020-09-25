@@ -72,6 +72,11 @@ class PaintCollectionViewController: UIViewController, UICollectionViewDelegate,
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let vc = PaintDetailViewController()
+        vc.name = paintDataSet[indexPath.row].title
+        vc.date = paintDataSet[indexPath.row].date
+        vc.artist = paintDataSet[indexPath.row].artist
+        vc.born = paintDataSet[indexPath.row].born
+        vc.age = paintDataSet[indexPath.row].age
         vc.paint.image = paintDataSet[indexPath.row].image.b64ToImage
         self.show(vc, sender: nil)
     }
