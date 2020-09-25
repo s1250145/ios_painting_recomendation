@@ -9,6 +9,13 @@
 import Foundation
 import SwiftyJSON
 
+enum APIError: Error {
+    case server(Int)
+    case decode(Error)
+    case noResponse
+    case unknown(Error)
+}
+
 protocol Requestable {
     associatedtype Model
     var url: String { get }
@@ -31,17 +38,35 @@ extension Requestable {
 }
 
 class APIClient {
-    func request<T: Requestable>(_ requestable: T, closure: @escaping(T.Model?) -> ()) {
+    func request<T: Requestable>(_ requestable: T, closure: @escaping(Result<T.Model?, APIError>) -> ()) {
         guard let request = requestable.urlRequest else { return }
         let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
-            guard let data = data else { return }
-            let model = try? requestable.decode(from: data)
-            closure(model)
+            if let error = error {
+                closure(.failure(APIError.unknown(error)))
+                return
+            }
+
+            guard let data = data, let response = response as? HTTPURLResponse else {
+                closure(.failure(APIError.noResponse))
+                return
+            }
+
+            if case 200..<300 = response.statusCode {
+                do {
+                    let model = try requestable.decode(from: data)
+                    closure(.success(model))
+                } catch let decodeError {
+                    closure(.failure(APIError.decode(decodeError)))
+                }
+            } else {
+                closure(.failure(APIError.server(response.statusCode)))
+            }
         }
         task.resume()
     }
 }
 
+// 1枚の絵画の情報を保持する構造体
 struct PaintData: Codable {
     var id = 0
     var title = ""
@@ -53,6 +78,7 @@ struct PaintData: Codable {
     var image = ""
 }
 
+// 絵画のデータセットを取得するAPIリクエスト
 struct PaintDataAPIRequest: Requestable {
     typealias Model = [PaintData]
 

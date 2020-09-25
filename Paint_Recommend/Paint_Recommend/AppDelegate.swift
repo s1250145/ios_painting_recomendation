@@ -19,10 +19,24 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let isBefore = UserDefaults.standard.bool(forKey: "isBefore")
         if(isBefore == false) {
             UserDefaults.standard.set(true, forKey: "isBefore")
-            APIClient().request(PaintDataAPIRequest()) { (response) in
-                JSONEncoder().keyEncodingStrategy = .convertToSnakeCase
-                guard let data = try? JSONEncoder().encode(response) else { return }
-                UserDefaults.standard.set(data, forKey: "PaintDataSet")
+            APIClient().request(PaintDataAPIRequest()) { result in
+                switch(result) {
+                case let .success(model):
+                    JSONEncoder().keyEncodingStrategy = .convertToSnakeCase
+                    guard let data = try? JSONEncoder().encode(model) else { return }
+                    UserDefaults.standard.set(data, forKey: "PaintDataSet")
+                case let .failure(error):
+                    switch error {
+                    case let .server(status):
+                        print("Error status code: \(status)")
+                    case .noResponse:
+                        print("Error no response")
+                    case let .unknown(e):
+                        print("Error unknown \(e)")
+                    default:
+                        print("Error \(error)")
+                    }
+                }
             }
             let firstVC = PaintCollectionViewController()
             navView = UINavigationController(rootViewController: firstVC)
