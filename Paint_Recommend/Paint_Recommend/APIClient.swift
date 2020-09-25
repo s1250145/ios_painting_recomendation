@@ -21,6 +21,8 @@ protocol Requestable {
     var url: String { get }
     var httpMethod: String { get }
     var headers: [String: String] { get }
+    // POST用のパラメーター
+    var body: Data? { get }
 
     func decode(from data: Data) throws -> Model
 }
@@ -30,6 +32,10 @@ extension Requestable {
         guard let url = URL(string: url) else { return nil }
         var request = URLRequest(url: url)
         request.httpMethod = httpMethod
+        // パラメーターがない時はセットしない
+        if let body = body {
+            request.httpBody = body
+        }
         headers.forEach { key, value in
             request.addValue(value, forHTTPHeaderField: key)
         }
@@ -101,5 +107,57 @@ struct PaintDataAPIRequest: Requestable {
 
     var headers: [String : String] {
         return [:]
+    }
+
+    var body: Data? {
+        return nil
+    }
+}
+
+// 1枚の絵画の評価情報を保持する構造体
+struct PaintEvaluationData {
+    var imageName = ""
+    var like = 0
+    var feel = 0
+}
+
+// おすすめ順の絵画のデータセットを取得するAPIリクエスト(POST)
+struct PaintEvaluationDataAPIRequest: Requestable {
+    var evaluations: PaintEvaluationData?
+
+    typealias Model = [PaintData]
+
+    var url: String {
+        return "http://127.0.0.1:5000/rec"
+    }
+
+    var httpMethod: String {
+        return "POST"
+    }
+
+    var headers: [String : String] {
+        return [
+            "Content-type": "application/json"
+        ]
+    }
+
+    // パラメーター（絵画の評価データ）
+    var body: Data? {
+        guard  let evaluations = evaluations else {
+            return nil
+        }
+        let body: [String: Any] = [
+            "eva": evaluations
+        ]
+        return try! JSONSerialization.data(withJSONObject: body, options: [])
+    }
+
+    func decode(from data: Data) throws -> [PaintData] {
+        var recommendPaintData = [PaintData]()
+        JSON(data).forEach { (_, l) in
+            let paint = PaintData(id: l["id"].intValue, title: l["title"].stringValue, date: l["date"].stringValue, artist: l["artist"].stringValue, born: l["born"].stringValue, age: l["age"].stringValue, imageName: l["imageName"].stringValue, image: l["image"].stringValue)
+            recommendPaintData.append(paint)
+        }
+        return recommendPaintData
     }
 }
