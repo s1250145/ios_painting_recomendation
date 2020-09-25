@@ -123,7 +123,8 @@ struct PaintEvaluationData {
 
 // おすすめ順の絵画のデータセットを取得するAPIリクエスト(POST)
 struct PaintEvaluationDataAPIRequest: Requestable {
-    var evaluations: PaintEvaluationData?
+    // 評価データ4つ以上でレコメンデーションを行う
+    var evaluations: [PaintEvaluationData]?
 
     typealias Model = [PaintData]
 
