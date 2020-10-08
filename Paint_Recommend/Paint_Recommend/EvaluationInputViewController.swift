@@ -9,6 +9,15 @@
 import UIKit
 
 class EvaluationInputViewController: UIViewController {
+    let disable = UIColor(red: 187/256, green: 188/256, blue: 222/256, alpha: 1.0)
+
+    let happy = CreateObject.inputButton(title: "Happy")
+    let fear = CreateObject.inputButton(title: "Fear")
+    let surprise = CreateObject.inputButton(title: "Surprise")
+    let sad = CreateObject.inputButton(title: "Sad")
+    let disgust = CreateObject.inputButton(title: "Disgust")
+    let angry = CreateObject.inputButton(title: "Angry")
+
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor(red: 150/255, green: 150/255, blue: 150/255, alpha: 0.6)
@@ -35,17 +44,18 @@ class EvaluationInputViewController: UIViewController {
         submitButton.addTarget(self, action: #selector(didTappedSubmitButton(_:)), for: .touchUpInside)
         popupView.addSubview(submitButton)
 
-        let happy = CreateObject.inputButton(title: "Happy")
+        happy.addTarget(self, action: #selector(didTappedFeelButton(_:)), for: .touchUpInside)
+        fear.addTarget(self, action: #selector(didTappedFeelButton(_:)), for: .touchUpInside)
+        surprise.addTarget(self, action: #selector(didTappedFeelButton(_:)), for: .touchUpInside)
+        sad.addTarget(self, action: #selector(didTappedFeelButton(_:)), for: .touchUpInside)
+        disgust.addTarget(self, action: #selector(didTappedFeelButton(_:)), for: .touchUpInside)
+        angry.addTarget(self, action: #selector(didTappedFeelButton(_:)), for: .touchUpInside)
+
         popupView.addSubview(happy)
-        let fear = CreateObject.inputButton(title: "Fear")
         popupView.addSubview(fear)
-        let surprise = CreateObject.inputButton(title: "Surprise")
         popupView.addSubview(surprise)
-        let sad = CreateObject.inputButton(title: "Sad")
         popupView.addSubview(sad)
-        let disgust = CreateObject.inputButton(title: "Disgust")
         popupView.addSubview(disgust)
-        let angry = CreateObject.inputButton(title: "Angry")
         popupView.addSubview(angry)
 
         NSLayoutConstraint.activate([
@@ -93,4 +103,29 @@ class EvaluationInputViewController: UIViewController {
         self.dismiss(animated: true, completion: nil)
     }
 
+    @objc func didTappedFeelButton(_ sender: UIButton) {
+        setDisableColorAllFeelButton()
+        sender.tintColor = .black
+        sender.setTitleColor(.black, for: .normal)
+    }
+
+    func setDisableColorAllFeelButton() {
+        happy.tintColor = disable
+        happy.setTitleColor(disable, for: .normal)
+
+        fear.tintColor = disable
+        fear.setTitleColor(disable, for: .normal)
+
+        surprise.tintColor = disable
+        surprise.setTitleColor(disable, for: .normal)
+
+        sad.tintColor = disable
+        sad.setTitleColor(disable, for: .normal)
+
+        disgust.tintColor = disable
+        disgust.setTitleColor(disable, for: .normal)
+
+        angry.tintColor = disable
+        angry.setTitleColor(disable, for: .normal)
+    }
 }
