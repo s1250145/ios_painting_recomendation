@@ -28,7 +28,7 @@ class EvaluationInputViewController: UIViewController {
         popupView.addSubview(likeAttention)
         let likePercent = CreateObject.createLabel(title: "", size: 18)
         popupView.addSubview(likePercent)
-        let submitAttention = CreateObject.createLabel(title: "you can try it more", size: 11)
+        let submitAttention = CreateObject.createLabel(title: "you can try it more", size: 14)
         popupView.addSubview(submitAttention)
 
         let submitButton = CreateObject.roundButton(title: "Submit")
@@ -66,25 +66,25 @@ class EvaluationInputViewController: UIViewController {
 
             heading.topAnchor.constraint(equalTo: popupView.topAnchor, constant: 20),
             feelAttention.topAnchor.constraint(equalTo: heading.bottomAnchor, constant: 20),
-            happy.topAnchor.constraint(equalTo: feelAttention.bottomAnchor, constant: 10),
-            fear.topAnchor.constraint(equalTo: feelAttention.bottomAnchor, constant: 10),
-            surprise.topAnchor.constraint(equalTo: feelAttention.bottomAnchor, constant: 10),
-            sad.topAnchor.constraint(equalTo: happy.bottomAnchor, constant: 10),
-            disgust.topAnchor.constraint(equalTo: fear.bottomAnchor, constant: 10),
-            angry.topAnchor.constraint(equalTo: surprise.bottomAnchor, constant: 10),
+            happy.topAnchor.constraint(equalTo: feelAttention.bottomAnchor, constant: 20),
+            fear.topAnchor.constraint(equalTo: feelAttention.bottomAnchor, constant: 20),
+            surprise.topAnchor.constraint(equalTo: feelAttention.bottomAnchor, constant: 20),
+            sad.topAnchor.constraint(equalTo: happy.bottomAnchor, constant: 60),
+            disgust.topAnchor.constraint(equalTo: fear.bottomAnchor, constant: 60),
+            angry.topAnchor.constraint(equalTo: surprise.bottomAnchor, constant: 60),
 
-            happy.leftAnchor.constraint(equalTo: popupView.leftAnchor, constant: 30),
-            fear.leftAnchor.constraint(equalTo: happy.rightAnchor, constant: 30),
-            surprise.leftAnchor.constraint(equalTo: fear.rightAnchor, constant: 30),
+            happy.leftAnchor.constraint(equalTo: popupView.leftAnchor, constant: 50),
+            fear.leftAnchor.constraint(equalTo: happy.rightAnchor, constant: 60),
+            surprise.leftAnchor.constraint(equalTo: fear.rightAnchor, constant: 60),
 
-            sad.leftAnchor.constraint(equalTo: popupView.leftAnchor, constant: 30),
-            disgust.leftAnchor.constraint(equalTo: sad.rightAnchor, constant: 30),
-            angry.leftAnchor.constraint(equalTo: disgust.rightAnchor, constant: 30),
+            sad.leftAnchor.constraint(equalTo: popupView.leftAnchor, constant: 50),
+            disgust.leftAnchor.constraint(equalTo: sad.rightAnchor, constant: 60),
+            angry.leftAnchor.constraint(equalTo: disgust.rightAnchor, constant: 60),
 
-            likeAttention.topAnchor.constraint(equalTo: disgust.bottomAnchor, constant: 20),
+            likeAttention.topAnchor.constraint(equalTo: disgust.bottomAnchor, constant: 70),
             likePercent.topAnchor.constraint(equalTo: likeAttention.bottomAnchor, constant: 10),
 
-            submitButton.topAnchor.constraint(equalTo: likePercent.bottomAnchor, constant: 10),
+            submitButton.topAnchor.constraint(equalTo: likePercent.bottomAnchor, constant: 120),
             submitAttention.topAnchor.constraint(equalTo: submitButton.bottomAnchor, constant: 10)
         ])
     }
