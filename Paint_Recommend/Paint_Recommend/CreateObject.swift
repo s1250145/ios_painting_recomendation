@@ -43,6 +43,19 @@ class CreateObject {
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }
+
+    static func slider(minEmoji: String, maxEmoji: String) -> UISlider {
+        let slider = UISlider(frame: CGRect(x: 0, y: 0, width: 0, height: 20))
+        slider.minimumValueImage = minEmoji.emojiToImage
+        slider.maximumValueImage = maxEmoji.emojiToImage
+        slider.minimumValue = 0.0
+        slider.maximumValue = 100.0
+        slider.value = 50.0
+//        slider.minimumTrackTintColor = UIColor.luvColor.mainColor
+//        slider.maximumTrackTintColor = UIColor.luvColor.subColor
+        slider.translatesAutoresizingMaskIntoConstraints = false
+        return slider
+    }
 }
 
 extension UIButton {
@@ -51,5 +64,42 @@ extension UIButton {
         self.titleEdgeInsets.left = -imageSize.width
         self.titleEdgeInsets.bottom = -imageSize.width * 1.5
         self.contentEdgeInsets = UIEdgeInsets(top: -15, left: -15, bottom: -15, right: -15)
+    }
+}
+
+extension String {
+    private func emojiToImage(text: String, size: CGFloat) -> UIImage {
+
+        let outputImageSize = CGSize.init(width: size, height: size)
+        let baseSize = text.boundingRect(with: CGSize(width: 2048, height: 2048),
+                                         options: .usesLineFragmentOrigin,
+                                         attributes: [.font: UIFont.systemFont(ofSize: size / 2)], context: nil).size
+        let fontSize = outputImageSize.width / max(baseSize.width, baseSize.height) * (outputImageSize.width / 2)
+        let font = UIFont.systemFont(ofSize: fontSize)
+        let textSize = text.boundingRect(with: CGSize(width: outputImageSize.width, height: outputImageSize.height),
+                                         options: .usesLineFragmentOrigin,
+                                         attributes: [.font: font], context: nil).size
+
+        let style = NSMutableParagraphStyle()
+        style.alignment = NSTextAlignment.center
+        style.lineBreakMode = NSLineBreakMode.byClipping
+
+        let attr : [NSAttributedString.Key : Any] = [NSAttributedString.Key.font : font,
+                                                     NSAttributedString.Key.paragraphStyle: style,
+                                                     NSAttributedString.Key.backgroundColor: UIColor.clear ]
+
+        UIGraphicsBeginImageContextWithOptions(outputImageSize, false, 0)
+        text.draw(in: CGRect(x: (size - textSize.width) / 2,
+                             y: (size - textSize.height) / 2,
+                             width: textSize.width,
+                             height: textSize.height),
+                  withAttributes: attr)
+        let image = UIGraphicsGetImageFromCurrentImageContext()!
+        UIGraphicsEndImageContext()
+        return image
+    }
+
+    var emojiToImage: UIImage? {
+        return emojiToImage(text: self, size: 20)
     }
 }

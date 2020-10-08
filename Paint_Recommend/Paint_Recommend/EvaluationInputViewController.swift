@@ -18,6 +18,10 @@ class EvaluationInputViewController: UIViewController {
     let disgust = CreateObject.inputButton(title: "Disgust")
     let angry = CreateObject.inputButton(title: "Angry")
 
+    let likePercent = CreateObject.createLabel(title: "", size: 18)
+
+    let slider = CreateObject.slider(minEmoji: "🚫", maxEmoji: "💓")
+
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor(red: 150/255, green: 150/255, blue: 150/255, alpha: 0.6)
@@ -35,7 +39,6 @@ class EvaluationInputViewController: UIViewController {
         popupView.addSubview(feelAttention)
         let likeAttention = CreateObject.createLabel(title: "please select your like percentage", size: 14)
         popupView.addSubview(likeAttention)
-        let likePercent = CreateObject.createLabel(title: "", size: 18)
         popupView.addSubview(likePercent)
         let submitAttention = CreateObject.createLabel(title: "you can try it more", size: 14)
         popupView.addSubview(submitAttention)
@@ -51,12 +54,16 @@ class EvaluationInputViewController: UIViewController {
         disgust.addTarget(self, action: #selector(didTappedFeelButton(_:)), for: .touchUpInside)
         angry.addTarget(self, action: #selector(didTappedFeelButton(_:)), for: .touchUpInside)
 
+        slider.addTarget(self, action: #selector(sliderDidChangeValue(_:)), for: .valueChanged)
+
         popupView.addSubview(happy)
         popupView.addSubview(fear)
         popupView.addSubview(surprise)
         popupView.addSubview(sad)
         popupView.addSubview(disgust)
         popupView.addSubview(angry)
+
+        view.addSubview(slider)
 
         NSLayoutConstraint.activate([
             popupView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
@@ -73,6 +80,7 @@ class EvaluationInputViewController: UIViewController {
             likePercent.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             submitAttention.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             submitButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            slider.centerXAnchor.constraint(equalTo: view.centerXAnchor),
 
             heading.topAnchor.constraint(equalTo: popupView.topAnchor, constant: 20),
             feelAttention.topAnchor.constraint(equalTo: heading.bottomAnchor, constant: 20),
@@ -93,14 +101,20 @@ class EvaluationInputViewController: UIViewController {
 
             likeAttention.topAnchor.constraint(equalTo: disgust.bottomAnchor, constant: 70),
             likePercent.topAnchor.constraint(equalTo: likeAttention.bottomAnchor, constant: 10),
+            slider.topAnchor.constraint(equalTo: likePercent.bottomAnchor, constant: 15),
+            slider.widthAnchor.constraint(equalToConstant: 260),
 
-            submitButton.topAnchor.constraint(equalTo: likePercent.bottomAnchor, constant: 120),
+            submitButton.topAnchor.constraint(equalTo: likePercent.bottomAnchor, constant: 50),
             submitAttention.topAnchor.constraint(equalTo: submitButton.bottomAnchor, constant: 10)
         ])
     }
 
     @objc func didTappedSubmitButton(_ sender: UIButton) {
         self.dismiss(animated: true, completion: nil)
+    }
+
+    @objc func sliderDidChangeValue(_ sender: UISlider) {
+        likePercent.text = String(Int(floor(sender.value)))
     }
 
     @objc func didTappedFeelButton(_ sender: UIButton) {
@@ -127,5 +141,16 @@ class EvaluationInputViewController: UIViewController {
 
         angry.tintColor = disable
         angry.setTitleColor(disable, for: .normal)
+    }
+}
+
+extension UISlider {
+    override open func beginTracking(_ touch: UITouch, with event: UIEvent?) -> Bool {
+        return true
+    }
+
+    override open func point(inside point: CGPoint, with event: UIEvent?) -> Bool {
+        bounds.size.height += 10
+        return bounds.contains(point)
     }
 }
