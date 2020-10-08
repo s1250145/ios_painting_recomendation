@@ -46,6 +46,7 @@ class PaintDetailViewController: UIViewController, UINavigationControllerDelegat
         view.addSubview(artistBorn)
 
         let inputButton = CreateObject.roundButton(title: "Input evaluation")
+        inputButton.addTarget(self, action: #selector(didTappedInputButton(_:)), for: .touchUpInside)
         view.addSubview(inputButton)
 
         NSLayoutConstraint.activate([
@@ -66,5 +67,11 @@ class PaintDetailViewController: UIViewController, UINavigationControllerDelegat
             inputButton.heightAnchor.constraint(equalToConstant: 45),
             inputButton.widthAnchor.constraint(equalToConstant: 260)
             ])
+    }
+
+    @objc func didTappedInputButton(_ sender: UIButton) {
+        let vc = EvaluationInputViewController()
+        vc.modalPresentationStyle = .overFullScreen
+        self.present(vc, animated: true, completion: nil)
     }
 }
