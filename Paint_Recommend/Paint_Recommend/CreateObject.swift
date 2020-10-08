@@ -32,6 +32,17 @@ class CreateObject {
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }
+
+    static func roundButton(title: String) -> UIButton {
+        let button = UIButton(frame: CGRect(x: 0, y: 0, width: 260, height: 45))
+        button.setTitle(title, for: .normal)
+        button.setTitleColor(.black, for: .normal)
+        button.titleLabel?.font = UIFont(name: "AmericanTypewriter", size: 15)
+        button.backgroundColor = UIColor(red: 187/256, green: 188/256, blue: 222/256, alpha: 1.0)
+        button.layer.cornerRadius = 20
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
+    }
 }
 
 extension UIButton {
