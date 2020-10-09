@@ -77,6 +77,7 @@ class PaintCollectionViewController: UIViewController, UICollectionViewDelegate,
         vc.born = paintDataSet[indexPath.row].born
         vc.age = paintDataSet[indexPath.row].age
         vc.paint.image = paintDataSet[indexPath.row].image.b64ToImage
+        vc.imageName = paintDataSet[indexPath.row].imageName
         self.show(vc, sender: nil)
     }
 }

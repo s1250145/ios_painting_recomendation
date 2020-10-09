@@ -11,6 +11,8 @@ import UIKit
 class EvaluationInputViewController: UIViewController {
     let disable = UIColor(red: 187/256, green: 188/256, blue: 222/256, alpha: 1.0)
 
+    var paintName = ""
+
     let happy = CreateObject.inputButton(title: "Happy")
     let fear = CreateObject.inputButton(title: "Fear")
     let surprise = CreateObject.inputButton(title: "Surprise")
@@ -128,7 +130,7 @@ class EvaluationInputViewController: UIViewController {
                 })
             })
         } else {
-            let submitData = PaintEvaluationData(imageName: "", feelingScore: feelingScore, likeScore: likeScore)
+            let submitData = PaintEvaluationData(imageName: paintName, feelingScore: feelingScore, likeScore: likeScore)
             let nc = self.presentingViewController as! UINavigationController
             let vc = nc.viewControllers[nc.viewControllers.count-1] as! PaintDetailViewController
             vc.paintEvaluationData.append(submitData)

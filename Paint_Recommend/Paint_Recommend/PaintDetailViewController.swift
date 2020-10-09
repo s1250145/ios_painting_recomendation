@@ -18,8 +18,7 @@ class PaintDetailViewController: UIViewController, UINavigationControllerDelegat
     var artist: String = ""
     var born: String = ""
     var age: String = ""
-
-    var evaluationCount = 0
+    var imageName: String = ""
 
     var paintEvaluationData = [PaintEvaluationData]()
 
@@ -71,6 +70,7 @@ class PaintDetailViewController: UIViewController, UINavigationControllerDelegat
     @objc func didTappedInputButton(_ sender: UIButton) {
         let vc = EvaluationInputViewController()
         vc.modalPresentationStyle = .overFullScreen
+        vc.paintName = imageName
         self.present(vc, animated: true, completion: nil)
     }
 }
