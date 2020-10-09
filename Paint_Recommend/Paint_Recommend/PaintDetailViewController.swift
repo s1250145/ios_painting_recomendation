@@ -20,7 +20,6 @@ class PaintDetailViewController: UIViewController, UINavigationControllerDelegat
     var age: String = ""
 
     var evaluationCount = 0
-    var tappedButton = ""
 
     var paintEvaluationData = [PaintEvaluationData]()
 

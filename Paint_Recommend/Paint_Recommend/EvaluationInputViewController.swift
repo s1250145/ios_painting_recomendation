@@ -18,9 +18,12 @@ class EvaluationInputViewController: UIViewController {
     let disgust = CreateObject.inputButton(title: "Disgust")
     let angry = CreateObject.inputButton(title: "Angry")
 
-    let likePercent = CreateObject.createLabel(title: "", size: 18)
+    var feelingScore = 0
 
+    let likePercent = CreateObject.createLabel(title: "", size: 18)
     let slider = CreateObject.slider(minEmoji: "🚫", maxEmoji: "💓")
+
+    var likeScore = 0
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -57,11 +60,17 @@ class EvaluationInputViewController: UIViewController {
         slider.addTarget(self, action: #selector(sliderDidChangeValue(_:)), for: .valueChanged)
 
         popupView.addSubview(happy)
+        happy.tag = 1
         popupView.addSubview(fear)
+        fear.tag = 2
         popupView.addSubview(surprise)
+        surprise.tag = 3
         popupView.addSubview(sad)
+        sad.tag = 4
         popupView.addSubview(disgust)
+        disgust.tag = 5
         popupView.addSubview(angry)
+        angry.tag = 6
 
         view.addSubview(slider)
 
@@ -110,17 +119,33 @@ class EvaluationInputViewController: UIViewController {
     }
 
     @objc func didTappedSubmitButton(_ sender: UIButton) {
-        self.dismiss(animated: true, completion: nil)
+        // 評価情報の記録
+        if feelingScore == 0 || likePercent.text == "" {
+            let alert = UIAlertController(title: "Please input all.", message: "", preferredStyle: .alert)
+            self.present(alert, animated: true, completion: { () in
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.5, execute: {
+                    alert.dismiss(animated: true, completion: nil)
+                })
+            })
+        } else {
+            let submitData = PaintEvaluationData(imageName: "", feelingScore: feelingScore, likeScore: likeScore)
+            let nc = self.presentingViewController as! UINavigationController
+            let vc = nc.viewControllers[nc.viewControllers.count-1] as! PaintDetailViewController
+            vc.paintEvaluationData.append(submitData)
+            self.dismiss(animated: true, completion: nil)
+        }
     }
 
     @objc func sliderDidChangeValue(_ sender: UISlider) {
         likePercent.text = String(Int(floor(sender.value)))
+        likeScore = Int(floor(sender.value))
     }
 
     @objc func didTappedFeelButton(_ sender: UIButton) {
         setDisableColorAllFeelButton()
         sender.tintColor = .black
         sender.setTitleColor(.black, for: .normal)
+        feelingScore = sender.tag
     }
 
     func setDisableColorAllFeelButton() {

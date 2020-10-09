@@ -117,13 +117,12 @@ struct PaintDataAPIRequest: Requestable {
 // 1枚の絵画の評価情報を保持する構造体
 struct PaintEvaluationData {
     var imageName = ""
-    var like: Int
-    var feel: Double
+    var feelingScore: Int
+    var likeScore: Int
 }
 
 // おすすめ順の絵画のデータセットを取得するAPIリクエスト(POST)
 struct PaintEvaluationDataAPIRequest: Requestable {
-    // 評価データ4つ以上でレコメンデーションを行う
     var evaluations: [PaintEvaluationData]?
 
     typealias Model = [PaintData]
