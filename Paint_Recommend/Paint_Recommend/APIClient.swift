@@ -115,7 +115,7 @@ struct PaintDataAPIRequest: Requestable {
 }
 
 // 1枚の絵画の評価情報を保持する構造体
-struct PaintEvaluationData {
+struct PaintEvaluationData: Codable {
     var imageName = ""
     var feelingScore: Int
     var likeScore: Int

@@ -131,9 +131,15 @@ class EvaluationInputViewController: UIViewController {
             })
         } else {
             let submitData = PaintEvaluationData(imageName: paintName, feelingScore: feelingScore, likeScore: likeScore)
-            let nc = self.presentingViewController as! UINavigationController
-            let vc = nc.viewControllers[nc.viewControllers.count-1] as! PaintDetailViewController
-            vc.paintEvaluationData.append(submitData)
+            JSONDecoder().keyDecodingStrategy = .convertFromSnakeCase
+            guard let data = UserDefaults.standard.data(forKey: "PaintEvaluationData"), var paintEvaluationData = try? JSONDecoder().decode([PaintEvaluationData].self, from: data) else { return }
+            paintEvaluationData.append(submitData)
+            JSONEncoder().keyEncodingStrategy = .convertToSnakeCase
+            guard let submit = try? JSONEncoder().encode(paintEvaluationData) else { return }
+            UserDefaults.standard.set(submit, forKey: "PaintEvaluationData")
+//            let nc = self.presentingViewController as! UINavigationController
+//            let vc = nc.viewControllers[nc.viewControllers.count-1] as! PaintDetailViewController
+//            vc.paintEvaluationData.append(submitData)
             self.dismiss(animated: true, completion: nil)
         }
     }

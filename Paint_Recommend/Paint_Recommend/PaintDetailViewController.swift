@@ -20,8 +20,6 @@ class PaintDetailViewController: UIViewController, UINavigationControllerDelegat
     var age: String = ""
     var imageName: String = ""
 
-    var paintEvaluationData = [PaintEvaluationData]()
-
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationController?.delegate = self

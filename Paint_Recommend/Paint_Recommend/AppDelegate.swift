@@ -26,6 +26,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                     guard let data = try? JSONEncoder().encode(model) else { return }
                     UserDefaults.standard.set(data, forKey: "PaintDataSet")
 
+                    let paintEvaluationData = [PaintEvaluationData]()
+                    guard let submitData = try? JSONEncoder().encode(paintEvaluationData) else { return }
+                    UserDefaults.standard.set(submitData, forKey: "PaintEvaluationData")
+
                     let firstVC = PaintCollectionViewController()
                     self.navView = UINavigationController(rootViewController: firstVC)
                     self.window?.rootViewController = self.navView
