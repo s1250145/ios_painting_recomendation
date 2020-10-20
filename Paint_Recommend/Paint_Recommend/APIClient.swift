@@ -98,7 +98,7 @@ struct PaintDataAPIRequest: Requestable {
     }
 
     var url: String {
-        return "https://fierce-temple-86110.herokuapp.com"
+        return "http://127.0.0.1:5000/"
     }
 
     var httpMethod: String {

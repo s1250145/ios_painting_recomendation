@@ -79,6 +79,9 @@ class PaintDetailViewController: UIViewController, UINavigationControllerDelegat
             JSONDecoder().keyDecodingStrategy = .convertFromSnakeCase
             guard let data = UserDefaults.standard.data(forKey: "PaintEvaluationData"), let paintEvaluationData = try? JSONDecoder().decode([PaintEvaluationData].self, from: data) else { return }
 
+            print(paintEvaluationData.count)
+            print(paintEvaluationData)
+
             if paintEvaluationData.count > 4 {
                 // POSTリクエスト送信
                 var request = PaintEvaluationDataAPIRequest()

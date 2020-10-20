@@ -30,11 +30,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                     guard let submitData = try? JSONEncoder().encode(paintEvaluationData) else { return }
                     UserDefaults.standard.set(submitData, forKey: "PaintEvaluationData")
 
-                    let firstVC = PaintCollectionViewController()
-                    self.navView = UINavigationController(rootViewController: firstVC)
-                    self.window?.rootViewController = self.navView
-                    self.window?.makeKeyAndVisible()
-                    
+                    // main threadで実行
+                    DispatchQueue.main.sync {
+                        let firstVC = PaintCollectionViewController()
+                        self.navView = UINavigationController(rootViewController: firstVC)
+                        self.window?.rootViewController = self.navView // error
+                        self.window?.makeKeyAndVisible()
+                    }
                 case let .failure(error):
                     switch error {
                     case let .server(status):

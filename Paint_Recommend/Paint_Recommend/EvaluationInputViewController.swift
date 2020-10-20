@@ -131,6 +131,7 @@ class EvaluationInputViewController: UIViewController {
             })
         } else {
             let submitData = PaintEvaluationData(imageName: paintName, feelingScore: feelingScore, likeScore: likeScore)
+            print(submitData)
             JSONDecoder().keyDecodingStrategy = .convertFromSnakeCase
             guard let data = UserDefaults.standard.data(forKey: "PaintEvaluationData"), var paintEvaluationData = try? JSONDecoder().decode([PaintEvaluationData].self, from: data) else { return }
             paintEvaluationData.append(submitData)
@@ -143,7 +144,7 @@ class EvaluationInputViewController: UIViewController {
 
     @objc func sliderDidChangeValue(_ sender: UISlider) {
         likePercent.text = String(Int(floor(sender.value)))
-        likeScore = Int(floor(sender.value)) / 100
+        likeScore = Int(floor(sender.value))
     }
 
     @objc func didTappedFeelButton(_ sender: UIButton) {

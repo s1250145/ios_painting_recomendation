@@ -22,6 +22,7 @@ class PaintCollectionViewController: UIViewController, UICollectionViewDelegate,
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
         navigationItem.backBarButtonItem?.tintColor = .black
 
+        print("3")
         paintDataSet = PaintAction.getPaintDataSet()
 
         let layout = UICollectionViewFlowLayout()
