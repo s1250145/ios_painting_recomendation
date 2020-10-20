@@ -138,7 +138,7 @@ class EvaluationInputViewController: UIViewController {
             JSONEncoder().keyEncodingStrategy = .convertToSnakeCase
             guard let submit = try? JSONEncoder().encode(paintEvaluationData) else { return }
             UserDefaults.standard.set(submit, forKey: "PaintEvaluationData")
-            self.dismiss(animated: true, completion: nil)
+            dismiss(animated: true, completion: nil)
         }
     }
 
