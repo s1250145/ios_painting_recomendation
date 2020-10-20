@@ -79,27 +79,29 @@ class PaintDetailViewController: UIViewController, UINavigationControllerDelegat
             JSONDecoder().keyDecodingStrategy = .convertFromSnakeCase
             guard let data = UserDefaults.standard.data(forKey: "PaintEvaluationData"), let paintEvaluationData = try? JSONDecoder().decode([PaintEvaluationData].self, from: data) else { return }
 
-            // POSTリクエスト送信
-            var request = PaintEvaluationDataAPIRequest()
-            request.evaluations = paintEvaluationData
-            APIClient().request(request) { result in
-                switch(result) {
-                case let .success(model):
-                    // レコメンデーション結果からリストを上書き
-                    JSONEncoder().keyEncodingStrategy = .convertToSnakeCase
-                    guard let list = try? JSONEncoder().encode(model) else { return }
-                    UserDefaults.standard.set(list, forKey: "PaintDataSet")
+            if paintEvaluationData.count > 4 {
+                // POSTリクエスト送信
+                var request = PaintEvaluationDataAPIRequest()
+                request.evaluations = paintEvaluationData
+                APIClient().request(request) { result in
+                    switch(result) {
+                    case let .success(model):
+                        // レコメンデーション結果からリストを上書き
+                        JSONEncoder().keyEncodingStrategy = .convertToSnakeCase
+                        guard let list = try? JSONEncoder().encode(model) else { return }
+                        UserDefaults.standard.set(list, forKey: "PaintDataSet")
 
-                case let .failure(error):
-                    switch error {
-                    case let .server(status):
-                        print("Error status code: \(status)")
-                    case .noResponse:
-                        print("Error no response")
-                    case let .unknown(e):
-                        print("Error unknown \(e)")
-                    default:
-                        print("Error \(error)")
+                    case let .failure(error):
+                        switch error {
+                        case let .server(status):
+                            print("Error status code: \(status)")
+                        case .noResponse:
+                            print("Error no response")
+                        case let .unknown(e):
+                            print("Error unknown \(e)")
+                        default:
+                            print("Error \(error)")
+                        }
                     }
                 }
             }
