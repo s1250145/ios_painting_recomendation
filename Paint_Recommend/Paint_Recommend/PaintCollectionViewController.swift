@@ -11,10 +11,12 @@ import UIKit
 class PaintCollectionViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UINavigationControllerDelegate {
     var paintDataSet = [PaintData]()
 
+    let sprash = SprashView(frame: .zero)
+
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
-
+        
         self.title = "Garally"
         self.navigationController?.navigationBar.titleTextAttributes = [.font: UIFont.init(name: "AmericanTypewriter", size: 30) as Any]
         self.navigationController?.navigationBar.barTintColor = UIColor(red: 187/256, green: 188/256, blue: 222/256, alpha: 1.0)
@@ -42,6 +44,24 @@ class PaintCollectionViewController: UIViewController, UICollectionViewDelegate,
             garally.widthAnchor.constraint(equalToConstant: view.frame.width),
             garally.heightAnchor.constraint(equalToConstant: view.frame.height)
             ])
+
+        view.addSubview(sprash)
+        view.addConstraints(for: sprash)
+        view.bringSubviewToFront(sprash)
+    }
+
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        UIView.animate(withDuration: 0.5, delay: 1.0,
+                       options: .curveEaseOut,
+                       animations: { () in
+                        self.sprash.logoImageView.transform = CGAffineTransform(scaleX: 0.8, y: 0.8)},
+                       completion: { (Bool) in })
+        UIView.animate(withDuration: 0.4, delay: 1.3, options: .curveEaseOut, animations: { () in
+            self.sprash.logoImageView.transform = CGAffineTransform(scaleX: 8.0, y: 8.0)
+            self.sprash.logoImageView.alpha = 0},
+                       completion: { (Bool) in
+                        self.sprash.removeFromSuperview() })
     }
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {

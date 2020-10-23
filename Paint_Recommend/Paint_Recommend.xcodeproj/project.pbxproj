@@ -134,10 +134,10 @@
 				4B994EC72511AFB400EA1CAD /* GridLayoutView.swift */,
 				4B8D9084251C5CB200D369D1 /* APIClient.swift */,
 				4BFB2E4B251D7F3C00093EDB /* PaintAction.swift */,
+				4B5758ED2542B4E200A5E682 /* SprashView.swift */,
 				4B78EE8E25105773000CFCFF /* Assets.xcassets */,
 				4B78EE9025105773000CFCFF /* LaunchScreen.storyboard */,
 				4B78EE9325105773000CFCFF /* Info.plist */,
-				4B5758ED2542B4E200A5E682 /* SprashView.swift */,
 			);
 			path = Paint_Recommend;
 			sourceTree = "<group>";
