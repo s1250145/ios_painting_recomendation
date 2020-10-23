@@ -98,7 +98,7 @@ struct PaintDataAPIRequest: Requestable {
     }
 
     var url: String {
-        return "http://127.0.0.1:5000/"
+        return "https://fierce-temple-86110.herokuapp.com/"
     }
 
     var httpMethod: String {
@@ -129,8 +129,8 @@ struct PaintEvaluationDataAPIRequest: Requestable {
     typealias Model = [PaintData]
 
     var url: String {
-//        return "https://fierce-temple-86110.herokuapp.com/order"
-        return "http://127.0.0.1:5000/local"
+        return "https://fierce-temple-86110.herokuapp.com/order"
+//        return "http://127.0.0.1:5000/order"
     }
 
     var httpMethod: String {
