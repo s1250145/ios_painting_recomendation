@@ -84,7 +84,6 @@ class PaintDetailViewController: UIViewController, UINavigationControllerDelegat
                 // POSTリクエスト送信
                 var request = PaintEvaluationDataAPIRequest()
                 request.evaluations = PaintAction.makeRequestDataSet(paintEvaluationData)
-                print(request.evaluations)
                 APIClient().request(request) { result in
                     switch(result) {
                     case let .success(model):

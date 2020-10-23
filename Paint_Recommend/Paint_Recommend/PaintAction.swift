@@ -19,21 +19,16 @@ class PaintAction {
         return paintDataSet
     }
 
-    static func makeRequestDataSet(_ data: [PaintEvaluationData]) -> Dictionary<String, [Evaluation]> {
-        var feel = [Evaluation]()
-        var like = [Evaluation]()
+    static func makeRequestDataSet(_ data: [PaintEvaluationData]) -> Dictionary<String, Any> {
+        var feel: [[String: Any]] = []
+        var like: [[String: Any]] = []
         for eva in data {
-            let f = Evaluation(img: eva.imageName, rate: [eva.feelingScore])
-            let l = Evaluation(img: eva.imageName, rate: [eva.likeScore])
+            let f = ["img": eva.imageName, "rate": [eva.feelingScore]] as [String : Any]
+            let l = ["img": eva.imageName, "rate": [eva.likeScore]] as [String : Any]
             feel.append(f)
             like.append(l)
         }
-        let dataSet: Dictionary<String, [Evaluation]> = ["Feel": feel, "Like": like]
+        let dataSet: Dictionary<String, Any> = ["Feel": feel, "Like": like]
         return dataSet
     }
-}
-
-struct Evaluation {
-    var img = ""
-    var rate = [Int]()
 }

@@ -124,12 +124,13 @@ struct PaintEvaluationData: Codable {
 // おすすめ順の絵画のデータセットを取得するAPIリクエスト(POST)
 struct PaintEvaluationDataAPIRequest: Requestable {
 //    var evaluations: [PaintEvaluationData]?
-    var evaluations: Dictionary<String, [Evaluation]>?
+    var evaluations: Dictionary<String, Any>?
 
     typealias Model = [PaintData]
 
     var url: String {
-        return "https://fierce-temple-86110.herokuapp.com/order"
+//        return "https://fierce-temple-86110.herokuapp.com/order"
+        return "http://127.0.0.1:5000/local"
     }
 
     var httpMethod: String {
@@ -147,10 +148,8 @@ struct PaintEvaluationDataAPIRequest: Requestable {
         guard  let evaluations = evaluations else {
             return nil
         }
-        let body: [String: Any] = [
-            "eva": evaluations
-        ]
-        return try! JSONSerialization.data(withJSONObject: body, options: [])
+        print(evaluations)
+        return try! JSONSerialization.data(withJSONObject: evaluations, options: [])
     }
 
     func decode(from data: Data) throws -> [PaintData] {
