@@ -123,7 +123,8 @@ struct PaintEvaluationData: Codable {
 
 // おすすめ順の絵画のデータセットを取得するAPIリクエスト(POST)
 struct PaintEvaluationDataAPIRequest: Requestable {
-    var evaluations: [PaintEvaluationData]?
+//    var evaluations: [PaintEvaluationData]?
+    var evaluations: Dictionary<String, [Evaluation]>?
 
     typealias Model = [PaintData]
 

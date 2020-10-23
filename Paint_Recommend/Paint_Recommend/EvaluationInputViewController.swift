@@ -131,7 +131,6 @@ class EvaluationInputViewController: UIViewController {
             })
         } else {
             let submitData = PaintEvaluationData(imageName: paintName, feelingScore: feelingScore, likeScore: likeScore)
-            print(submitData)
             JSONDecoder().keyDecodingStrategy = .convertFromSnakeCase
             guard let data = UserDefaults.standard.data(forKey: "PaintEvaluationData"), var paintEvaluationData = try? JSONDecoder().decode([PaintEvaluationData].self, from: data) else { return }
             paintEvaluationData.append(submitData)

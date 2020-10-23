@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import SwiftyJSON
 
 class PaintAction {
     static func getPaintDataSet() -> [PaintData] {
@@ -17,4 +18,22 @@ class PaintAction {
         }
         return paintDataSet
     }
+
+    static func makeRequestDataSet(_ data: [PaintEvaluationData]) -> Dictionary<String, [Evaluation]> {
+        var feel = [Evaluation]()
+        var like = [Evaluation]()
+        for eva in data {
+            let f = Evaluation(img: eva.imageName, rate: [eva.feelingScore])
+            let l = Evaluation(img: eva.imageName, rate: [eva.likeScore])
+            feel.append(f)
+            like.append(l)
+        }
+        let dataSet: Dictionary<String, [Evaluation]> = ["Feel": feel, "Like": like]
+        return dataSet
+    }
+}
+
+struct Evaluation {
+    var img = ""
+    var rate = [Int]()
 }
