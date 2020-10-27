@@ -44,24 +44,6 @@ class PaintCollectionViewController: UIViewController, UICollectionViewDelegate,
             garally.widthAnchor.constraint(equalToConstant: view.frame.width),
             garally.heightAnchor.constraint(equalToConstant: view.frame.height)
             ])
-
-        view.addSubview(sprash)
-        view.addConstraints(for: sprash)
-        view.bringSubviewToFront(sprash)
-    }
-
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        UIView.animate(withDuration: 0.5, delay: 1.0,
-                       options: .curveEaseOut,
-                       animations: { () in
-                        self.sprash.logoImageView.transform = CGAffineTransform(scaleX: 0.8, y: 0.8)},
-                       completion: { (Bool) in })
-        UIView.animate(withDuration: 0.4, delay: 1.3, options: .curveEaseOut, animations: { () in
-            self.sprash.logoImageView.transform = CGAffineTransform(scaleX: 8.0, y: 8.0)
-            self.sprash.logoImageView.alpha = 0},
-                       completion: { (Bool) in
-                        self.sprash.removeFromSuperview() })
     }
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {

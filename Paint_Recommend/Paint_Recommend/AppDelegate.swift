@@ -34,7 +34,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                     DispatchQueue.main.sync {
                         let firstVC = PaintCollectionViewController()
                         self.navView = UINavigationController(rootViewController: firstVC)
-                        self.window?.rootViewController = self.navView // error
+                        self.window?.rootViewController = self.navView
                         self.window?.makeKeyAndVisible()
                     }
                 case let .failure(error):
