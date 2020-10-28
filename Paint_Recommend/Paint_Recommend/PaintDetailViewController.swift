@@ -20,6 +20,8 @@ class PaintDetailViewController: UIViewController, UINavigationControllerDelegat
     var age: String = ""
     var imageName: String = ""
 
+    var childCallBack: (() -> Void)?
+
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationController?.delegate = self
@@ -88,7 +90,7 @@ class PaintDetailViewController: UIViewController, UINavigationControllerDelegat
         self.present(vc, animated: true, completion: nil)
     }
 
-    // Handling from detailView to CollectionView
+    // Handling from detailView to collectionView
     func navigationController(_ navigationController: UINavigationController, willShow viewController: UIViewController, animated: Bool) {
         // 評価の送信とレコメンデーション結果からリスト更新
         if viewController is PaintCollectionViewController {
@@ -107,6 +109,8 @@ class PaintDetailViewController: UIViewController, UINavigationControllerDelegat
                         JSONEncoder().keyEncodingStrategy = .convertToSnakeCase
                         guard let list = try? JSONEncoder().encode(model) else { return }
                         UserDefaults.standard.set(list, forKey: "PaintDataSet")
+                        // リストの上書き後にクロージャ実行
+                        self.childCallBack?()
 
                     case let .failure(error):
                         switch error {

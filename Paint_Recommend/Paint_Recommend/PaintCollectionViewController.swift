@@ -77,6 +77,7 @@ class PaintCollectionViewController: UIViewController, UICollectionViewDelegate,
         vc.age = paintDataSet[indexPath.row].age
         vc.paint.image = paintDataSet[indexPath.row].image.b64ToImage
         vc.imageName = paintDataSet[indexPath.row].imageName
+        vc.childCallBack = { self.callBack() }
         self.show(vc, sender: nil)
     }
 }
