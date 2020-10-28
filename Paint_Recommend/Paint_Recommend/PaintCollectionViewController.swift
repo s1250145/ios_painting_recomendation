@@ -40,7 +40,10 @@ class PaintCollectionViewController: UIViewController, UICollectionViewDelegate,
 
     func callBack() {
         // Update paint list
-        garally.reloadData()
+        DispatchQueue.main.sync {
+            paintDataSet = PaintAction.getPaintDataSet()
+            garally.reloadData()
+        }
     }
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
