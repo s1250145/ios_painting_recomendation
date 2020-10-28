@@ -30,13 +30,29 @@ class PaintDetailViewController: UIViewController, UINavigationControllerDelegat
         view.addSubview(paint)
 
         let artTitle = CreateObject.createLabel(title: name, size: 36)
+        let titleLen = artTitle.intrinsicContentSize.width
         view.addSubview(artTitle)
+
+        // Long title label animation
+        if titleLen > view.bounds.width {
+            UIView.animate(withDuration: 8.5, delay: 0.0, options: .repeat, animations: {
+                artTitle.frame.origin.x += titleLen
+            }, completion: nil)
+        }
 
         let artDate = CreateObject.createLabel(title: date, size: 24)
         view.addSubview(artDate)
 
         let artistName = CreateObject.createLabel(title: artist, size: 28)
+        let nameLen = artistName.intrinsicContentSize.width
         view.addSubview(artistName)
+
+        // Long artist name animation
+        if nameLen > view.bounds.width {
+            UIView.animate(withDuration: 8.5, delay: 0.0, options: .repeat, animations: {
+                artistName.frame.origin.x += nameLen
+            }, completion: nil)
+        }
 
         let artistBorn = CreateObject.createLabel(title: born+", "+age, size: 18)
         view.addSubview(artistBorn)

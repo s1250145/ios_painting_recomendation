@@ -51,8 +51,6 @@ class CreateObject {
         slider.minimumValue = 0.0
         slider.maximumValue = 100.0
         slider.value = 50.0
-//        slider.minimumTrackTintColor = UIColor.luvColor.mainColor
-//        slider.maximumTrackTintColor = UIColor.luvColor.subColor
         slider.translatesAutoresizingMaskIntoConstraints = false
         return slider
     }
