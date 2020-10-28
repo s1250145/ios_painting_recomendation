@@ -12,6 +12,7 @@ class PaintCollectionViewController: UIViewController, UICollectionViewDelegate,
     var paintDataSet = [PaintData]()
 
     let sprash = SprashView(frame: .zero)
+    let garally = CreateObject.collection()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,17 +26,8 @@ class PaintCollectionViewController: UIViewController, UICollectionViewDelegate,
         navigationItem.backBarButtonItem?.tintColor = .black
 
         paintDataSet = PaintAction.getPaintDataSet()
-
-        let layout = UICollectionViewFlowLayout()
-        layout.scrollDirection = .vertical
-        layout.sectionInset = UIEdgeInsets(top: 5, left: 5, bottom: 10, right: 5)
-
-        let garally = UICollectionView(frame: CGRect.zero, collectionViewLayout: layout)
-        garally.backgroundColor = .white
-        garally.translatesAutoresizingMaskIntoConstraints = false
         garally.delegate = self
         garally.dataSource = self
-        garally.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "Paint")
         view.addSubview(garally)
 
         NSLayoutConstraint.activate([
@@ -44,6 +36,11 @@ class PaintCollectionViewController: UIViewController, UICollectionViewDelegate,
             garally.widthAnchor.constraint(equalToConstant: view.frame.width),
             garally.heightAnchor.constraint(equalToConstant: view.frame.height)
             ])
+    }
+
+    func callBack() {
+        // Update paint list
+        garally.reloadData()
     }
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {

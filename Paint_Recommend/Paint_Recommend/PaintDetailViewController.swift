@@ -29,7 +29,7 @@ class PaintDetailViewController: UIViewController, UINavigationControllerDelegat
         paint.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(paint)
 
-        let artTitle = CreateObject.createLabel(title: name, size: 36)
+        let artTitle = CreateObject.label(title: name, size: 36)
         let titleLen = artTitle.intrinsicContentSize.width
         view.addSubview(artTitle)
 
@@ -40,10 +40,10 @@ class PaintDetailViewController: UIViewController, UINavigationControllerDelegat
             }, completion: nil)
         }
 
-        let artDate = CreateObject.createLabel(title: date, size: 24)
+        let artDate = CreateObject.label(title: date, size: 24)
         view.addSubview(artDate)
 
-        let artistName = CreateObject.createLabel(title: artist, size: 28)
+        let artistName = CreateObject.label(title: artist, size: 28)
         let nameLen = artistName.intrinsicContentSize.width
         view.addSubview(artistName)
 
@@ -54,7 +54,7 @@ class PaintDetailViewController: UIViewController, UINavigationControllerDelegat
             }, completion: nil)
         }
 
-        let artistBorn = CreateObject.createLabel(title: born+", "+age, size: 18)
+        let artistBorn = CreateObject.label(title: born+", "+age, size: 18)
         view.addSubview(artistBorn)
 
         let inputButton = CreateObject.roundButton(title: "Input evaluation")

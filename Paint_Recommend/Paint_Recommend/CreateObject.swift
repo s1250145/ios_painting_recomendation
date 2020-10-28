@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 
 class CreateObject {
-    static func createLabel(title: String, size: CGFloat) -> UILabel {
+    static func label(title: String, size: CGFloat) -> UILabel {
         let label = UILabel(frame: .zero)
         label.text = title
         label.font = UIFont(name: "Palatino-Roman", size: size)
@@ -53,6 +53,18 @@ class CreateObject {
         slider.value = 50.0
         slider.translatesAutoresizingMaskIntoConstraints = false
         return slider
+    }
+
+    static func collection() -> UICollectionView {
+        let layout = UICollectionViewFlowLayout()
+        layout.scrollDirection = .vertical
+        layout.sectionInset = UIEdgeInsets(top: 5, left: 5, bottom: 10, right: 5)
+
+        let collection = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        collection.backgroundColor = .white
+        collection.translatesAutoresizingMaskIntoConstraints = false
+        collection.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "Paint")
+        return collection
     }
 }
 

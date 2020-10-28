@@ -22,7 +22,7 @@ class EvaluationInputViewController: UIViewController {
 
     var feelingScore = 0
 
-    let likePercent = CreateObject.createLabel(title: "", size: 18)
+    let likePercent = CreateObject.label(title: "", size: 18)
     let slider = CreateObject.slider(minEmoji: "🚫", maxEmoji: "💓")
 
     var likeScore = 0
@@ -38,14 +38,14 @@ class EvaluationInputViewController: UIViewController {
         popupView.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(popupView)
 
-        let heading = CreateObject.createLabel(title: "How do you like feel?", size: 24)
+        let heading = CreateObject.label(title: "How do you like feel?", size: 24)
         popupView.addSubview(heading)
-        let feelAttention = CreateObject.createLabel(title: "please choose one.", size: 14)
+        let feelAttention = CreateObject.label(title: "please choose one.", size: 14)
         popupView.addSubview(feelAttention)
-        let likeAttention = CreateObject.createLabel(title: "please select your like percentage", size: 14)
+        let likeAttention = CreateObject.label(title: "please select your like percentage", size: 14)
         popupView.addSubview(likeAttention)
         popupView.addSubview(likePercent)
-        let submitAttention = CreateObject.createLabel(title: "you can try it more", size: 14)
+        let submitAttention = CreateObject.label(title: "you can try it more", size: 14)
         popupView.addSubview(submitAttention)
 
         let submitButton = CreateObject.roundButton(title: "Submit")
