@@ -8,7 +8,7 @@
 
 import UIKit
 
-class EvaluationInputViewController: UIViewController {
+class EvaluationInputViewController: UIViewController, UIGestureRecognizerDelegate {
     let disable = UIColor(red: 187/256, green: 188/256, blue: 222/256, alpha: 1.0)
 
     var paintName = ""
@@ -27,15 +27,21 @@ class EvaluationInputViewController: UIViewController {
 
     var likeScore = 0
 
+    let popupView = UIView(frame: CGRect(x: 0, y: 0, width: 340, height: 490))
+
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor(red: 150/255, green: 150/255, blue: 150/255, alpha: 0.6)
 
+        // Gesture for tapped out of popup view
         let closeTap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.tappedGrayArea(_:)))
         self.view.addGestureRecognizer(closeTap)
 
+        closeTap.cancelsTouchesInView = false
+        closeTap.delegate = self
+
         // popup view
-        let popupView = UIView(frame: CGRect(x: 0, y: 0, width: 340, height: 490))
+
         popupView.backgroundColor = .white
         popupView.layer.cornerRadius = 20
         popupView.translatesAutoresizingMaskIntoConstraints = false
@@ -144,8 +150,15 @@ class EvaluationInputViewController: UIViewController {
         }
     }
 
+    // popupにタップしたときは反応させない
+    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool {
+        if((touch.view?.isDescendant(of: popupView))!) {
+            return false
+        }
+        return true
+    }
+
     @objc func tappedGrayArea(_ sender: UITapGestureRecognizer) {
-        // エリア外をタップしたときはポップアップを消す
         dismiss(animated: true, completion: nil)
     }
 
