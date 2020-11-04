@@ -31,6 +31,9 @@ class EvaluationInputViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = UIColor(red: 150/255, green: 150/255, blue: 150/255, alpha: 0.6)
 
+        let closeTap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.tappedGrayArea(_:)))
+        self.view.addGestureRecognizer(closeTap)
+
         // popup view
         let popupView = UIView(frame: CGRect(x: 0, y: 0, width: 340, height: 490))
         popupView.backgroundColor = .white
@@ -139,6 +142,11 @@ class EvaluationInputViewController: UIViewController {
             UserDefaults.standard.set(submit, forKey: "PaintEvaluationData")
             dismiss(animated: true, completion: nil)
         }
+    }
+
+    @objc func tappedGrayArea(_ sender: UITapGestureRecognizer) {
+        // エリア外をタップしたときはポップアップを消す
+        dismiss(animated: true, completion: nil)
     }
 
     @objc func sliderDidChangeValue(_ sender: UISlider) {
