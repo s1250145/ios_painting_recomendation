@@ -56,7 +56,7 @@ class CreateObject {
     static func collection() -> UICollectionView {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
-        layout.sectionInset = UIEdgeInsets(top: 5, left: 5, bottom: 10, right: 5)
+        layout.sectionInset = UIEdgeInsets(top: 15, left: 5, bottom: 15, right: 5)
 
         let collection = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collection.backgroundColor = .white
