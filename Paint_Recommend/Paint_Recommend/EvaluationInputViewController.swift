@@ -41,7 +41,6 @@ class EvaluationInputViewController: UIViewController, UIGestureRecognizerDelega
         closeTap.delegate = self
 
         // popup view
-
         popupView.backgroundColor = .white
         popupView.layer.cornerRadius = 20
         popupView.translatesAutoresizingMaskIntoConstraints = false

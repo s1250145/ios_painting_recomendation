@@ -28,6 +28,7 @@ class PaintDetailViewController: UIViewController, UINavigationControllerDelegat
 
         view.backgroundColor = .white
 
+        paint.contentMode = .scaleAspectFit
         paint.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(paint)
 
