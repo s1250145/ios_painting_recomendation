@@ -25,7 +25,7 @@ class PaintCollectionViewController: UIViewController, UICollectionViewDelegate,
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
         navigationItem.backBarButtonItem?.tintColor = .black
 
-        paintDataSet = PaintAction.getPaintDataSet()
+        paintDataSet = PaintAction.get(key: "PaintDataSet")
         garally.delegate = self
         garally.dataSource = self
         view.addSubview(garally)
@@ -41,7 +41,7 @@ class PaintCollectionViewController: UIViewController, UICollectionViewDelegate,
     func callBack() {
         // Update paint list
         DispatchQueue.main.sync {
-            paintDataSet = PaintAction.getPaintDataSet()
+            paintDataSet = PaintAction.get(key: "PaintDataSet")
             garally.reloadData()
         }
     }

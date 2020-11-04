@@ -139,9 +139,9 @@ class EvaluationInputViewController: UIViewController, UIGestureRecognizerDelega
                 })
             })
         } else {
-            var paintEvaluationData = PaintAction.getEvaluationData()
+            var paintEvaluationData :[PaintEvaluationData] = PaintAction.get(key: "PaintEvaluationData")
             paintEvaluationData.append(PaintEvaluationData(imageName: paintName, feelingScore: feelingScore, likeScore: likeScore))
-            PaintAction.saveEvaluationData(paintEvaluationData)
+            PaintAction.save(paintEvaluationData, key: "PaintEvaluationData")
             dismiss(animated: true, completion: nil)
         }
     }

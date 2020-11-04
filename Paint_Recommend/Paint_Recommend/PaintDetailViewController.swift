@@ -95,7 +95,7 @@ class PaintDetailViewController: UIViewController, UINavigationControllerDelegat
     func navigationController(_ navigationController: UINavigationController, willShow viewController: UIViewController, animated: Bool) {
         // 評価の送信とレコメンデーション結果からリスト更新
         if viewController is PaintCollectionViewController {
-            let paintEvaluationData = PaintAction.getEvaluationData()
+            let paintEvaluationData: [PaintEvaluationData] = PaintAction.get(key: "PaintEvaluationData")
 
             if paintEvaluationData.count > 4 {
                 // POSTリクエスト送信
@@ -104,7 +104,7 @@ class PaintDetailViewController: UIViewController, UINavigationControllerDelegat
                 APIClient().request(request) { result in
                     switch(result) {
                     case let .success(model):
-                        PaintAction.savePaintDataSet(model!)
+                        PaintAction.save(model!, key: "PaintDataSet")
                         self.childCallBack?()
 
                     case let .failure(error):

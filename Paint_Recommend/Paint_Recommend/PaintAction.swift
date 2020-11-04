@@ -10,33 +10,18 @@ import Foundation
 import SwiftyJSON
 
 class PaintAction {
-    static func getPaintDataSet() -> [PaintData] {
-        let jsonDecoder = JSONDecoder()
-        jsonDecoder.keyDecodingStrategy = .convertFromSnakeCase
-        guard let data = UserDefaults.standard.data(forKey: "PaintDataSet"), let paintDataSet = try? jsonDecoder.decode([PaintData].self, from: data) else {
-            return [PaintData]()
+    static func get<T: Decodable>(key: String) -> [T] {
+        JSONDecoder().keyDecodingStrategy = .convertFromSnakeCase
+        guard let data = UserDefaults.standard.data(forKey: key), let dataSet = try? JSONDecoder().decode([T].self, from: data) else {
+            return [T]()
         }
-        return paintDataSet
+        return dataSet
     }
 
-    static func savePaintDataSet(_ saveData: PaintEvaluationDataAPIRequest.Model) {
+    static func save<T: Encodable>(_ saveData: T, key: String) {
         JSONEncoder().keyEncodingStrategy = .convertToSnakeCase
         guard let data = try? JSONEncoder().encode(saveData) else { return }
-        UserDefaults.standard.set(data, forKey: "PaintDataSet")
-    }
-
-    static func getEvaluationData() -> [PaintEvaluationData] {
-        JSONDecoder().keyDecodingStrategy = .convertFromSnakeCase
-        guard let data = UserDefaults.standard.data(forKey: "PaintEvaluationData"), let paintEvaluationData = try? JSONDecoder().decode([PaintEvaluationData].self, from: data) else {
-            return [PaintEvaluationData]()
-        }
-        return paintEvaluationData
-    }
-
-    static func saveEvaluationData(_ submitData: [PaintEvaluationData]) {
-        JSONEncoder().keyEncodingStrategy = .convertToSnakeCase
-        guard let data = try? JSONEncoder().encode(submitData) else { return }
-        UserDefaults.standard.set(data, forKey: "PaintEvaluationData")
+        UserDefaults.standard.set(data, forKey: key)
     }
 
     static func makeRequestDataSet(_ data: [PaintEvaluationData]) -> Dictionary<String, Any> {
