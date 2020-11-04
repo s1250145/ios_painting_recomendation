@@ -100,32 +100,32 @@ class PaintDetailViewController: UIViewController, UINavigationControllerDelegat
             guard let data = UserDefaults.standard.data(forKey: "PaintEvaluationData"), let paintEvaluationData = try? JSONDecoder().decode([PaintEvaluationData].self, from: data) else { return }
 
             if paintEvaluationData.count > 4 {
-                // POSTリクエスト送信
-                var request = PaintEvaluationDataAPIRequest()
-                request.evaluations = PaintAction.makeRequestDataSet(paintEvaluationData)
-                APIClient().request(request) { result in
-                    switch(result) {
-                    case let .success(model):
-                        // レコメンデーション結果からリストを上書き
-                        JSONEncoder().keyEncodingStrategy = .convertToSnakeCase
-                        guard let list = try? JSONEncoder().encode(model) else { return }
-                        UserDefaults.standard.set(list, forKey: "PaintDataSet")
-                        // リストの上書き後にクロージャ実行
-                        self.childCallBack?()
-
-                    case let .failure(error):
-                        switch error {
-                        case let .server(status):
-                            print("Error status code: \(status)")
-                        case .noResponse:
-                            print("Error no response")
-                        case let .unknown(e):
-                            print("Error unknown \(e)")
-                        default:
-                            print("Error \(error)")
-                        }
-                    }
-                }
+//                // POSTリクエスト送信
+//                var request = PaintEvaluationDataAPIRequest()
+//                request.evaluations = PaintAction.makeRequestDataSet(paintEvaluationData)
+//                APIClient().request(request) { result in
+//                    switch(result) {
+//                    case let .success(model):
+//                        // レコメンデーション結果からリストを上書き
+//                        JSONEncoder().keyEncodingStrategy = .convertToSnakeCase
+//                        guard let list = try? JSONEncoder().encode(model) else { return }
+//                        UserDefaults.standard.set(list, forKey: "PaintDataSet")
+//                        // リストの上書き後にクロージャ実行
+//                        self.childCallBack?()
+//
+//                    case let .failure(error):
+//                        switch error {
+//                        case let .server(status):
+//                            print("Error status code: \(status)")
+//                        case .noResponse:
+//                            print("Error no response")
+//                        case let .unknown(e):
+//                            print("Error unknown \(e)")
+//                        default:
+//                            print("Error \(error)")
+//                        }
+//                    }
+//                }
             }
         }
     }

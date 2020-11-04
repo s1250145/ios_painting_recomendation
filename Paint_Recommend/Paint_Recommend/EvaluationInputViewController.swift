@@ -106,21 +106,22 @@ class EvaluationInputViewController: UIViewController, UIGestureRecognizerDelega
             happy.topAnchor.constraint(equalTo: feelAttention.bottomAnchor, constant: 20),
             fear.topAnchor.constraint(equalTo: feelAttention.bottomAnchor, constant: 20),
             surprise.topAnchor.constraint(equalTo: feelAttention.bottomAnchor, constant: 20),
-            sad.topAnchor.constraint(equalTo: happy.bottomAnchor, constant: 60),
-            disgust.topAnchor.constraint(equalTo: fear.bottomAnchor, constant: 60),
-            angry.topAnchor.constraint(equalTo: surprise.bottomAnchor, constant: 60),
+            sad.topAnchor.constraint(equalTo: happy.bottomAnchor, constant: 40),
+            disgust.topAnchor.constraint(equalTo: fear.bottomAnchor, constant: 40),
+            angry.topAnchor.constraint(equalTo: surprise.bottomAnchor, constant: 40),
 
-            happy.leftAnchor.constraint(equalTo: popupView.leftAnchor, constant: 50),
-            fear.leftAnchor.constraint(equalTo: happy.rightAnchor, constant: 60),
-            surprise.leftAnchor.constraint(equalTo: fear.rightAnchor, constant: 60),
+            fear.centerXAnchor.constraint(equalTo: popupView.centerXAnchor),
+            disgust.centerXAnchor.constraint(equalTo: popupView.centerXAnchor),
 
-            sad.leftAnchor.constraint(equalTo: popupView.leftAnchor, constant: 50),
-            disgust.leftAnchor.constraint(equalTo: sad.rightAnchor, constant: 60),
-            angry.leftAnchor.constraint(equalTo: disgust.rightAnchor, constant: 60),
+            happy.rightAnchor.constraint(equalTo: fear.leftAnchor, constant: 10),
+            sad.rightAnchor.constraint(equalTo: disgust.leftAnchor, constant: 10),
 
-            likeAttention.topAnchor.constraint(equalTo: disgust.bottomAnchor, constant: 70),
+            surprise.leftAnchor.constraint(equalTo: fear.rightAnchor, constant: -10),
+            angry.leftAnchor.constraint(equalTo: disgust.rightAnchor, constant: -10),
+
+            likeAttention.topAnchor.constraint(equalTo: disgust.bottomAnchor, constant: 30),
             likePercent.topAnchor.constraint(equalTo: likeAttention.bottomAnchor, constant: 10),
-            slider.topAnchor.constraint(equalTo: likePercent.bottomAnchor, constant: 15),
+            slider.topAnchor.constraint(equalTo: likePercent.bottomAnchor, constant: 10),
             slider.widthAnchor.constraint(equalToConstant: 260),
 
             submitButton.topAnchor.constraint(equalTo: likePercent.bottomAnchor, constant: 50),

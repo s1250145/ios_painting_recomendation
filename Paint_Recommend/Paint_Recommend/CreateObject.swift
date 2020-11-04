@@ -26,8 +26,6 @@ class CreateObject {
         button.setImage(UIImage(named: title)?.withRenderingMode(.alwaysTemplate), for: .normal)
         button.tintColor = UIColor(red: 187/256, green: 188/256, blue: 222/256, alpha: 1.0) // disable button color
         button.imageView?.contentMode = .scaleAspectFit
-        button.contentHorizontalAlignment = .fill
-        button.contentVerticalAlignment = .fill
         button.centerVertically()
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
@@ -71,9 +69,17 @@ class CreateObject {
 extension UIButton {
     func centerVertically() {
         guard let imageSize = self.imageView?.image?.size else { return }
-        self.titleEdgeInsets.left = -imageSize.width
-        self.titleEdgeInsets.bottom = -imageSize.width * 1.5
-        self.contentEdgeInsets = UIEdgeInsets(top: -15, left: -15, bottom: -15, right: -15)
+
+        let labelString = NSString(string: self.titleLabel!.text!)
+        let labelSize = labelString.size(withAttributes: [NSAttributedString.Key.font: self.titleLabel!.font])
+
+        let verticalMergin = (self.frame.height - imageSize.height - labelSize.height) / 2.0
+
+        let imageHorizonMergin = (self.frame.width - imageSize.width) / 2.0
+
+        self.contentEdgeInsets = .zero
+        self.imageEdgeInsets = UIEdgeInsets(top: verticalMergin, left: imageHorizonMergin, bottom: verticalMergin + labelSize.height, right: imageHorizonMergin - labelSize.width)
+        self.titleEdgeInsets = UIEdgeInsets(top: verticalMergin + imageSize.height, left: -imageSize.width, bottom: verticalMergin, right: 0)
     }
 }
 
