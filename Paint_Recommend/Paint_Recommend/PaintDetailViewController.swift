@@ -95,37 +95,31 @@ class PaintDetailViewController: UIViewController, UINavigationControllerDelegat
     func navigationController(_ navigationController: UINavigationController, willShow viewController: UIViewController, animated: Bool) {
         // 評価の送信とレコメンデーション結果からリスト更新
         if viewController is PaintCollectionViewController {
-            // 評価データを取得
-            JSONDecoder().keyDecodingStrategy = .convertFromSnakeCase
-            guard let data = UserDefaults.standard.data(forKey: "PaintEvaluationData"), let paintEvaluationData = try? JSONDecoder().decode([PaintEvaluationData].self, from: data) else { return }
+            let paintEvaluationData = PaintAction.getEvaluationData()
 
             if paintEvaluationData.count > 4 {
-//                // POSTリクエスト送信
-//                var request = PaintEvaluationDataAPIRequest()
-//                request.evaluations = PaintAction.makeRequestDataSet(paintEvaluationData)
-//                APIClient().request(request) { result in
-//                    switch(result) {
-//                    case let .success(model):
-//                        // レコメンデーション結果からリストを上書き
-//                        JSONEncoder().keyEncodingStrategy = .convertToSnakeCase
-//                        guard let list = try? JSONEncoder().encode(model) else { return }
-//                        UserDefaults.standard.set(list, forKey: "PaintDataSet")
-//                        // リストの上書き後にクロージャ実行
-//                        self.childCallBack?()
-//
-//                    case let .failure(error):
-//                        switch error {
-//                        case let .server(status):
-//                            print("Error status code: \(status)")
-//                        case .noResponse:
-//                            print("Error no response")
-//                        case let .unknown(e):
-//                            print("Error unknown \(e)")
-//                        default:
-//                            print("Error \(error)")
-//                        }
-//                    }
-//                }
+                // POSTリクエスト送信
+                var request = PaintEvaluationDataAPIRequest()
+                request.evaluations = PaintAction.makeRequestDataSet(paintEvaluationData)
+                APIClient().request(request) { result in
+                    switch(result) {
+                    case let .success(model):
+                        PaintAction.savePaintDataSet(model!)
+                        self.childCallBack?()
+
+                    case let .failure(error):
+                        switch error {
+                        case let .server(status):
+                            print("Error status code: \(status)")
+                        case .noResponse:
+                            print("Error no response")
+                        case let .unknown(e):
+                            print("Error unknown \(e)")
+                        default:
+                            print("Error \(error)")
+                        }
+                    }
+                }
             }
         }
     }

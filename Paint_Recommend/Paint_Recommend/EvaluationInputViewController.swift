@@ -139,13 +139,9 @@ class EvaluationInputViewController: UIViewController, UIGestureRecognizerDelega
                 })
             })
         } else {
-            let submitData = PaintEvaluationData(imageName: paintName, feelingScore: feelingScore, likeScore: likeScore)
-            JSONDecoder().keyDecodingStrategy = .convertFromSnakeCase
-            guard let data = UserDefaults.standard.data(forKey: "PaintEvaluationData"), var paintEvaluationData = try? JSONDecoder().decode([PaintEvaluationData].self, from: data) else { return }
-            paintEvaluationData.append(submitData)
-            JSONEncoder().keyEncodingStrategy = .convertToSnakeCase
-            guard let submit = try? JSONEncoder().encode(paintEvaluationData) else { return }
-            UserDefaults.standard.set(submit, forKey: "PaintEvaluationData")
+            var paintEvaluationData = PaintAction.getEvaluationData()
+            paintEvaluationData.append(PaintEvaluationData(imageName: paintName, feelingScore: feelingScore, likeScore: likeScore))
+            PaintAction.saveEvaluationData(paintEvaluationData)
             dismiss(animated: true, completion: nil)
         }
     }

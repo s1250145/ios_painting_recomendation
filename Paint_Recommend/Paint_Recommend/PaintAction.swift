@@ -19,6 +19,26 @@ class PaintAction {
         return paintDataSet
     }
 
+    static func savePaintDataSet(_ saveData: PaintEvaluationDataAPIRequest.Model) {
+        JSONEncoder().keyEncodingStrategy = .convertToSnakeCase
+        guard let data = try? JSONEncoder().encode(saveData) else { return }
+        UserDefaults.standard.set(data, forKey: "PaintDataSet")
+    }
+
+    static func getEvaluationData() -> [PaintEvaluationData] {
+        JSONDecoder().keyDecodingStrategy = .convertFromSnakeCase
+        guard let data = UserDefaults.standard.data(forKey: "PaintEvaluationData"), let paintEvaluationData = try? JSONDecoder().decode([PaintEvaluationData].self, from: data) else {
+            return [PaintEvaluationData]()
+        }
+        return paintEvaluationData
+    }
+
+    static func saveEvaluationData(_ submitData: [PaintEvaluationData]) {
+        JSONEncoder().keyEncodingStrategy = .convertToSnakeCase
+        guard let data = try? JSONEncoder().encode(submitData) else { return }
+        UserDefaults.standard.set(data, forKey: "PaintEvaluationData")
+    }
+
     static func makeRequestDataSet(_ data: [PaintEvaluationData]) -> Dictionary<String, Any> {
         var feel: [[String: Any]] = []
         var like: [[String: Any]] = []
