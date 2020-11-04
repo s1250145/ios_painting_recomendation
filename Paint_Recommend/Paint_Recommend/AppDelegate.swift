@@ -17,18 +17,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         window = UIWindow(frame: UIScreen.main.bounds)
         let isBefore = UserDefaults.standard.bool(forKey: "isBefore")
+
         if(isBefore == false) {
             UserDefaults.standard.set(true, forKey: "isBefore")
             APIClient().request(PaintDataAPIRequest()) { result in
                 switch(result) {
                 case let .success(model):
-                    JSONEncoder().keyEncodingStrategy = .convertToSnakeCase
-                    guard let data = try? JSONEncoder().encode(model) else { return }
-                    UserDefaults.standard.set(data, forKey: "PaintDataSet")
-
-                    let paintEvaluationData = [PaintEvaluationData]()
-                    guard let submitData = try? JSONEncoder().encode(paintEvaluationData) else { return }
-                    UserDefaults.standard.set(submitData, forKey: "PaintEvaluationData")
+                    PaintAction.save(model, key: "PaintDataSet") // 絵画データセット
+                    PaintAction.save([PaintEvaluationData](), key: "PaintEvaluationData") // 評価データの初期化
 
                     // main threadで実行
                     DispatchQueue.main.sync {
@@ -37,6 +33,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                         self.window?.rootViewController = self.navView
                         self.window?.makeKeyAndVisible()
                     }
+
                 case let .failure(error):
                     switch error {
                     case let .server(status):
@@ -50,6 +47,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                     }
                 }
             }
+
         } else {
             let firstVC = PaintCollectionViewController()
             navView = UINavigationController(rootViewController: firstVC)
