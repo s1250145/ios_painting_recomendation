@@ -159,7 +159,7 @@ class EvaluationInputViewController: UIViewController, UIGestureRecognizerDelega
     }
 
     @objc func sliderDidChangeValue(_ sender: UISlider) {
-        likePercent.text = String(sender.value)
+        likePercent.text = String(floor(sender.value*100))
         likeScore = Double(sender.value)
     }
 
