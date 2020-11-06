@@ -47,8 +47,8 @@ class CreateObject {
         slider.minimumValueImage = minEmoji.emojiToImage
         slider.maximumValueImage = maxEmoji.emojiToImage
         slider.minimumValue = 0.0
-        slider.maximumValue = 100.0
-        slider.value = 50.0
+        slider.maximumValue = 1.0
+        slider.value = 0.5
         slider.translatesAutoresizingMaskIntoConstraints = false
         return slider
     }

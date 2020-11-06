@@ -25,7 +25,7 @@ class EvaluationInputViewController: UIViewController, UIGestureRecognizerDelega
     let likePercent = CreateObject.label(title: "", size: 18)
     let slider = CreateObject.slider(minEmoji: "🚫", maxEmoji: "💓")
 
-    var likeScore = 0
+    var likeScore = 0.0
 
     let popupView = UIView(frame: CGRect(x: 0, y: 0, width: 340, height: 490))
 
@@ -159,8 +159,8 @@ class EvaluationInputViewController: UIViewController, UIGestureRecognizerDelega
     }
 
     @objc func sliderDidChangeValue(_ sender: UISlider) {
-        likePercent.text = String(Int(floor(sender.value)))
-        likeScore = Int(floor(sender.value))
+        likePercent.text = String(sender.value)
+        likeScore = Double(sender.value)
     }
 
     @objc func didTappedFeelButton(_ sender: UIButton) {

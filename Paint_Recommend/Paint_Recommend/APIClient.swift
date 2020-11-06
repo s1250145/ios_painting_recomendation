@@ -118,7 +118,7 @@ struct PaintDataAPIRequest: Requestable {
 struct PaintEvaluationData: Codable {
     var imageName = ""
     var feelingScore: Int
-    var likeScore: Int
+    var likeScore: Double
 }
 
 // おすすめ順の絵画のデータセットを取得するAPIリクエスト(POST)
@@ -128,8 +128,8 @@ struct PaintEvaluationDataAPIRequest: Requestable {
     typealias Model = [PaintData]
 
     var url: String {
-        return "https://fierce-temple-86110.herokuapp.com/order"
-//        return "http://127.0.0.1:5000/order"
+//        return "https://fierce-temple-86110.herokuapp.com/order"
+        return "http://127.0.0.1:5000/order"
     }
 
     var httpMethod: String {
