@@ -82,7 +82,7 @@ class EvaluationInputViewController: UIViewController, UIGestureRecognizerDelega
         popupView.addSubview(angry)
         angry.tag = 6
 
-        view.addSubview(slider)
+        popupView.addSubview(slider)
 
         NSLayoutConstraint.activate([
             popupView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
