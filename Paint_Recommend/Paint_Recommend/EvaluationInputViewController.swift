@@ -9,7 +9,7 @@
 import UIKit
 
 class EvaluationInputViewController: UIViewController, UIGestureRecognizerDelegate {
-    var paintName = ""
+    let popupView = UIView(frame: CGRect(x: 0, y: 0, width: 340, height: 490))
 
     let happy = CreateObject.feelInputButton(title: "Happy")
     let fear = CreateObject.feelInputButton(title: "Fear")
@@ -18,14 +18,14 @@ class EvaluationInputViewController: UIViewController, UIGestureRecognizerDelega
     let disgust = CreateObject.feelInputButton(title: "Disgust")
     let angry = CreateObject.feelInputButton(title: "Angry")
 
-    var feelingScore = 0
-
-    let likePercent = CreateObject.label(title: "", size: 18)
     let slider = CreateObject.slider(minEmoji: "🚫", maxEmoji: "💓")
 
+    let likePercent = CreateObject.normalLabel("???", size: 18, frame: CGRect(x: 0, y: 0, width: 50, height: 18))
+
+    var feelingScore = 0
     var likeScore = 0.0
 
-    let popupView = UIView(frame: CGRect(x: 0, y: 0, width: 340, height: 490))
+    var paintName = ""
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,20 +39,33 @@ class EvaluationInputViewController: UIViewController, UIGestureRecognizerDelega
         closeTap.delegate = self
 
         // popup view
+        popupView.center.x = view.bounds.width/2
+        popupView.center.y = view.bounds.height/2
         popupView.backgroundColor = .white
         popupView.layer.cornerRadius = 20
-        popupView.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(popupView)
 
-        let heading = CreateObject.label(title: "How do you like feel?", size: 24)
-        popupView.addSubview(heading)
-        let feelAttention = CreateObject.label(title: "please choose one.", size: 14)
+        let popup_w = popupView.bounds.width
+
+        let title = CreateObject.normalLabel("How do you like feel?", size: 24, frame: CGRect(x: 0, y: 20, width: 0, height: 24))
+        title.sizeToFit()
+        title.center.x = popup_w/2
+        popupView.addSubview(title)
+
+        let feelAttention = CreateObject.normalLabel("please choose one.", size: 14, frame: CGRect(x: 0, y: title.bottom+20, width: 0, height: 14))
+        feelAttention.sizeToFit()
+        feelAttention.center.x = popup_w/2
         popupView.addSubview(feelAttention)
-        let likeAttention = CreateObject.label(title: "please select your like percentage", size: 14)
+
+        let likeAttention = CreateObject.normalLabel("please select your like percentage", size: 14, frame: CGRect(x: 0, y: 300, width: 0, height: 14))
+        likeAttention.sizeToFit()
+        likeAttention.center.x = popup_w/2
         popupView.addSubview(likeAttention)
+
+        likePercent.center.x = popup_w/2
+        likePercent.center.y = likeAttention.bottom+15
+        likePercent.textAlignment = .center
         popupView.addSubview(likePercent)
-        let submitAttention = CreateObject.label(title: "you can try it more", size: 14)
-        popupView.addSubview(submitAttention)
 
         let submitButton = CreateObject.roundButton(title: "Submit")
         submitButton.addTarget(self, action: #selector(didTappedSubmitButton(_:)), for: .touchUpInside)
@@ -83,24 +96,11 @@ class EvaluationInputViewController: UIViewController, UIGestureRecognizerDelega
         popupView.addSubview(slider)
 
         NSLayoutConstraint.activate([
-            popupView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            popupView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
-            popupView.widthAnchor.constraint(equalToConstant: 340),
-            popupView.heightAnchor.constraint(equalToConstant: 490),
-
             submitButton.heightAnchor.constraint(equalToConstant: 45),
             submitButton.widthAnchor.constraint(equalToConstant: 260),
-
-            heading.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            feelAttention.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            likeAttention.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            likePercent.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            submitAttention.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             submitButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             slider.centerXAnchor.constraint(equalTo: view.centerXAnchor),
 
-            heading.topAnchor.constraint(equalTo: popupView.topAnchor, constant: 20),
-            feelAttention.topAnchor.constraint(equalTo: heading.bottomAnchor, constant: 20),
             happy.topAnchor.constraint(equalTo: feelAttention.bottomAnchor, constant: 20),
             fear.topAnchor.constraint(equalTo: feelAttention.bottomAnchor, constant: 20),
             surprise.topAnchor.constraint(equalTo: feelAttention.bottomAnchor, constant: 20),
@@ -110,20 +110,14 @@ class EvaluationInputViewController: UIViewController, UIGestureRecognizerDelega
 
             fear.centerXAnchor.constraint(equalTo: popupView.centerXAnchor),
             disgust.centerXAnchor.constraint(equalTo: popupView.centerXAnchor),
-
             happy.rightAnchor.constraint(equalTo: fear.leftAnchor, constant: 10),
             sad.rightAnchor.constraint(equalTo: disgust.leftAnchor, constant: 10),
-
             surprise.leftAnchor.constraint(equalTo: fear.rightAnchor, constant: -10),
             angry.leftAnchor.constraint(equalTo: disgust.rightAnchor, constant: -10),
 
-            likeAttention.topAnchor.constraint(equalTo: disgust.bottomAnchor, constant: 30),
-            likePercent.topAnchor.constraint(equalTo: likeAttention.bottomAnchor, constant: 10),
             slider.topAnchor.constraint(equalTo: likePercent.bottomAnchor, constant: 10),
             slider.widthAnchor.constraint(equalToConstant: 260),
-
-            submitButton.topAnchor.constraint(equalTo: likePercent.bottomAnchor, constant: 50),
-            submitAttention.topAnchor.constraint(equalTo: submitButton.bottomAnchor, constant: 10)
+            submitButton.topAnchor.constraint(equalTo: likePercent.bottomAnchor, constant: 50)
         ])
     }
 
