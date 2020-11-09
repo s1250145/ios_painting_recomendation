@@ -132,18 +132,23 @@ class EvaluationInputViewController: UIViewController, UIGestureRecognizerDelega
     @objc func didTappedSubmitButton(_ sender: UIButton) {
         // 評価情報の記録
         if feelingScore == 0 || likePercent.text == "" {
-            let alert = UIAlertController(title: "Please input all.", message: "", preferredStyle: .alert)
-            self.present(alert, animated: true, completion: { () in
-                DispatchQueue.main.asyncAfter(deadline: .now() + 0.5, execute: {
-                    alert.dismiss(animated: true, completion: nil)
-                })
-            })
+            showAlert("Please input all", 0.5)
         } else {
             var paintEvaluationData :[PaintEvaluationData] = PaintAction.get(key: "PaintEvaluationData")
             paintEvaluationData.append(PaintEvaluationData(imageName: paintName, feelingScore: feelingScore, likeScore: likeScore))
             PaintAction.save(paintEvaluationData, key: "PaintEvaluationData")
+            showAlert("Submit complete", 0.3)
             dismiss(animated: true, completion: nil)
         }
+    }
+
+    func showAlert(_ msg: String, _ time: Double) {
+        let alert = UIAlertController(title: msg, message: "", preferredStyle: .alert)
+        self.present(alert, animated: true, completion: { () in
+            DispatchQueue.main.asyncAfter(deadline: .now() + time, execute: {
+                alert.dismiss(animated: true, completion: nil)
+            })
+        })
     }
 
     // popupにタップしたときは反応させない
