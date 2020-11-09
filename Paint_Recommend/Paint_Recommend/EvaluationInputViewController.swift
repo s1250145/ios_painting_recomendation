@@ -9,8 +9,6 @@
 import UIKit
 
 class EvaluationInputViewController: UIViewController, UIGestureRecognizerDelegate {
-    let disable = UIColor(red: 187/256, green: 188/256, blue: 222/256, alpha: 1.0)
-
     var paintName = ""
 
     let happy = CreateObject.inputButton(title: "Happy")
@@ -176,23 +174,23 @@ class EvaluationInputViewController: UIViewController, UIGestureRecognizerDelega
     }
 
     func setDisableColorAllFeelButton() {
-        happy.tintColor = disable
-        happy.setTitleColor(disable, for: .normal)
+        happy.tintColor = UIColor.q4.disable
+        happy.setTitleColor(UIColor.q4.disable, for: .normal)
 
-        fear.tintColor = disable
-        fear.setTitleColor(disable, for: .normal)
+        fear.tintColor = UIColor.q4.disable
+        fear.setTitleColor(UIColor.q4.disable, for: .normal)
 
-        surprise.tintColor = disable
-        surprise.setTitleColor(disable, for: .normal)
+        surprise.tintColor = UIColor.q4.disable
+        surprise.setTitleColor(UIColor.q4.disable, for: .normal)
 
-        sad.tintColor = disable
-        sad.setTitleColor(disable, for: .normal)
+        sad.tintColor = UIColor.q4.disable
+        sad.setTitleColor(UIColor.q4.disable, for: .normal)
 
-        disgust.tintColor = disable
-        disgust.setTitleColor(disable, for: .normal)
+        disgust.tintColor = UIColor.q4.disable
+        disgust.setTitleColor(UIColor.q4.disable, for: .normal)
 
-        angry.tintColor = disable
-        angry.setTitleColor(disable, for: .normal)
+        angry.tintColor = UIColor.q4.disable
+        angry.setTitleColor(UIColor.q4.disable, for: .normal)
     }
 }
 

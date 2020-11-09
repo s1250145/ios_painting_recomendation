@@ -9,8 +9,6 @@
 import UIKit
 
 class PaintDetailViewController: UIViewController, UINavigationControllerDelegate {
-    let disable = UIColor(red: 187/256, green: 188/256, blue: 222/256, alpha: 1.0)
-
     var paint = UIImageView(frame: .zero)
 
     var name: String = ""

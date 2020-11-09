@@ -21,10 +21,10 @@ class CreateObject {
     static func inputButton(title: String) -> UIButton {
         let button = UIButton(frame: CGRect(x: 0, y: 0, width: 30, height: 30))
         button.setTitle(title, for: .normal)
-        button.setTitleColor(UIColor(red: 187/256, green: 188/256, blue: 222/256, alpha: 1.0), for: .normal)
+        button.setTitleColor(UIColor.q4.disable, for: .normal)
         button.titleLabel?.font = UIFont.systemFont(ofSize: 15)
         button.setImage(UIImage(named: title)?.withRenderingMode(.alwaysTemplate), for: .normal)
-        button.tintColor = UIColor(red: 187/256, green: 188/256, blue: 222/256, alpha: 1.0) // disable button color
+        button.tintColor = UIColor.q4.disable // disable button color
         button.imageView?.contentMode = .scaleAspectFit
         button.centerVertically()
         button.translatesAutoresizingMaskIntoConstraints = false
@@ -36,7 +36,7 @@ class CreateObject {
         button.setTitle(title, for: .normal)
         button.setTitleColor(.black, for: .normal)
         button.titleLabel?.font = UIFont(name: "AmericanTypewriter", size: 15)
-        button.backgroundColor = UIColor(red: 187/256, green: 188/256, blue: 222/256, alpha: 1.0)
+        button.backgroundColor = UIColor.q4.main
         button.layer.cornerRadius = 20
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
