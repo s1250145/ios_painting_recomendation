@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import MarqueeLabel
 
 class CreateObject {
     static func label(title: String, size: CGFloat) -> UILabel {
@@ -15,6 +16,20 @@ class CreateObject {
         label.text = title
         label.font = UIFont(name: "Palatino-Roman", size: size)!
         label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }
+
+    static func autoscrollLabel(_ title: String, size: CGFloat, frame: CGRect) -> MarqueeLabel {
+        let label = MarqueeLabel.init(frame: frame, duration: 8.0, fadeLength: 10.0)
+        label.text = title
+        label.font = UIFont(name: "Palatino-Roman", size: size)
+        return label
+    }
+
+    static func normalLabel(_ title: String, size: CGFloat, frame: CGRect) -> UILabel {
+        let label = UILabel(frame: frame)
+        label.text = title
+        label.font = UIFont(name: "Palatino-Roman", size: size)
         return label
     }
 

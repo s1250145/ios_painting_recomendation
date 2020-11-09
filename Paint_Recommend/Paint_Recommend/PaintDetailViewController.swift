@@ -32,33 +32,25 @@ class PaintDetailViewController: UIViewController, UINavigationControllerDelegat
 
         let w = paint.bounds.size.width
 
-        let artTitle = MarqueeLabel.init(frame: CGRect(x: 20.0, y: paint.bottom+130, width: w, height: 36), duration: 8.0, fadeLength: 10.0)
-        artTitle.text = name
-        artTitle.font = UIFont(name: "Palatino-Roman", size: 36)!
+        let artTitle = CreateObject.autoscrollLabel(name, size: 36, frame: CGRect(x: 20, y: paint.bottom+10, width: w, height: 36))
         view.addSubview(artTitle)
 
-        let artDate = UILabel(frame: CGRect(x: 20, y: artTitle.bottom+5, width: w, height: 24))
-        artDate.text = date
-        artDate.font = UIFont(name: "Palatino-Roman", size: 24)!
+        let artDate = CreateObject.normalLabel(date, size: 24, frame: CGRect(x: 20, y: artTitle.bottom+5, width: w, height: 24))
         view.addSubview(artDate)
 
-        let artistName = MarqueeLabel.init(frame: CGRect(x: 20.0, y: artDate.bottom+5, width: w, height: 28), duration: 8.0, fadeLength: 10.0)
-        artistName.text = artist
-        artistName.font = UIFont(name: "Palatino-Roman", size: 28)!
+        let artistName = CreateObject.autoscrollLabel(artist, size: 28, frame: CGRect(x: 20, y: artDate.bottom+5, width: w, height: 28))
         view.addSubview(artistName)
 
-        let artistBorn = CreateObject.label(title: born+", "+age, size: 18)
-        view.addSubview(artistBorn)
+        let bornIn = CreateObject.normalLabel(born+", "+age, size: 18, frame: CGRect(x: 20, y: artistName.bottom+5, width: w, height: 18))
+        view.addSubview(bornIn)
 
         let inputButton = CreateObject.roundButton(title: "Input evaluation")
         inputButton.addTarget(self, action: #selector(didTappedInputButton(_:)), for: .touchUpInside)
         view.addSubview(inputButton)
 
         NSLayoutConstraint.activate([
-            artistBorn.topAnchor.constraint(equalTo: artistName.bottomAnchor, constant: 0),
-            artistBorn.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 20),
             inputButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            inputButton.topAnchor.constraint(equalTo: artistBorn.bottomAnchor, constant: 50),
+            inputButton.topAnchor.constraint(equalTo: bornIn.bottomAnchor, constant: 50),
             inputButton.heightAnchor.constraint(equalToConstant: 45),
             inputButton.widthAnchor.constraint(equalToConstant: 260)
             ])
