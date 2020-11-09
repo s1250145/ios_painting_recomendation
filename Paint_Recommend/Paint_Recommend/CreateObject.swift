@@ -18,13 +18,13 @@ class CreateObject {
         return label
     }
 
-    static func inputButton(title: String) -> UIButton {
+    static func feelInputButton(title: String) -> UIButton {
         let button = UIButton(frame: CGRect(x: 0, y: 0, width: 30, height: 30))
         button.setTitle(title, for: .normal)
         button.setTitleColor(UIColor.q4.disable, for: .normal)
         button.titleLabel?.font = UIFont.systemFont(ofSize: 15)
         button.setImage(UIImage(named: title)?.withRenderingMode(.alwaysTemplate), for: .normal)
-        button.tintColor = UIColor.q4.disable // disable button color
+        button.tintColor = UIColor.q4.disable
         button.imageView?.contentMode = .scaleAspectFit
         button.centerVertically()
         button.translatesAutoresizingMaskIntoConstraints = false

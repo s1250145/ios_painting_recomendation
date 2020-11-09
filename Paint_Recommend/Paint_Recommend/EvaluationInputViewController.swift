@@ -11,12 +11,12 @@ import UIKit
 class EvaluationInputViewController: UIViewController, UIGestureRecognizerDelegate {
     var paintName = ""
 
-    let happy = CreateObject.inputButton(title: "Happy")
-    let fear = CreateObject.inputButton(title: "Fear")
-    let surprise = CreateObject.inputButton(title: "Surprise")
-    let sad = CreateObject.inputButton(title: "Sad")
-    let disgust = CreateObject.inputButton(title: "Disgust")
-    let angry = CreateObject.inputButton(title: "Angry")
+    let happy = CreateObject.feelInputButton(title: "Happy")
+    let fear = CreateObject.feelInputButton(title: "Fear")
+    let surprise = CreateObject.feelInputButton(title: "Surprise")
+    let sad = CreateObject.feelInputButton(title: "Sad")
+    let disgust = CreateObject.feelInputButton(title: "Disgust")
+    let angry = CreateObject.feelInputButton(title: "Angry")
 
     var feelingScore = 0
 
