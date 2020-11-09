@@ -7,9 +7,10 @@
 //
 
 import UIKit
+import MarqueeLabel
 
 class PaintDetailViewController: UIViewController, UINavigationControllerDelegate {
-    var paint = UIImageView(frame: .zero)
+    var paint = UIImageView(frame: CGRect(x: UIScreen.main.bounds.size.width*0.05, y: 100, width: UIScreen.main.bounds.size.width*0.9, height: 400))
 
     var name: String = ""
     var date: String = ""
@@ -27,33 +28,25 @@ class PaintDetailViewController: UIViewController, UINavigationControllerDelegat
         view.backgroundColor = .white
 
         paint.contentMode = .scaleAspectFit
-        paint.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(paint)
 
-        let artTitle = CreateObject.label(title: name, size: 36)
-        let titleLen = artTitle.intrinsicContentSize.width
+        let w = paint.bounds.size.width
+        let h = paint.bounds.size.height
+
+        let artTitle = MarqueeLabel.init(frame: CGRect(x: 20.0, y: h+130, width: w, height: 36), duration: 8.0, fadeLength: 10.0)
+        artTitle.text = name
+        artTitle.font = UIFont(name: "Palatino-Roman", size: 36)!
         view.addSubview(artTitle)
 
-        // Long title label animation
-        if titleLen > view.bounds.width {
-            UIView.animate(withDuration: 8.5, delay: 0.0, options: .repeat, animations: {
-                artTitle.frame.origin.x += titleLen
-            }, completion: nil)
-        }
-
-        let artDate = CreateObject.label(title: date, size: 24)
+        let artDate = UILabel(frame: CGRect(x: 20, y: h+130+artTitle.bounds.size.height+5, width: w, height: 24))
+        artDate.text = date
+        artDate.font = UIFont(name: "Palatino-Roman", size: 24)!
         view.addSubview(artDate)
 
-        let artistName = CreateObject.label(title: artist, size: 28)
-        let nameLen = artistName.intrinsicContentSize.width
+        let artistName = MarqueeLabel.init(frame: CGRect(x: 20.0, y: h+130+artTitle.bounds.size.height+5+artDate.bounds.size.height+5, width: w, height: 28), duration: 8.0, fadeLength: 10.0)
+        artistName.text = artist
+        artistName.font = UIFont(name: "Palatino-Roman", size: 28)!
         view.addSubview(artistName)
-
-        // Long artist name animation
-        if nameLen > view.bounds.width {
-            UIView.animate(withDuration: 8.5, delay: 0.0, options: .repeat, animations: {
-                artistName.frame.origin.x += nameLen
-            }, completion: nil)
-        }
 
         let artistBorn = CreateObject.label(title: born+", "+age, size: 18)
         view.addSubview(artistBorn)
@@ -63,16 +56,6 @@ class PaintDetailViewController: UIViewController, UINavigationControllerDelegat
         view.addSubview(inputButton)
 
         NSLayoutConstraint.activate([
-            paint.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            paint.topAnchor.constraint(equalTo: view.topAnchor, constant: 100),
-            paint.heightAnchor.constraint(equalToConstant: 400),
-            paint.widthAnchor.constraint(equalToConstant: view.frame.width*0.95),
-            artTitle.topAnchor.constraint(equalTo: paint.bottomAnchor, constant: 20),
-            artTitle.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 20),
-            artDate.topAnchor.constraint(equalTo: artTitle.bottomAnchor, constant: 0),
-            artDate.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 20),
-            artistName.topAnchor.constraint(equalTo: artDate.bottomAnchor, constant: 20),
-            artistName.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 20),
             artistBorn.topAnchor.constraint(equalTo: artistName.bottomAnchor, constant: 0),
             artistBorn.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 20),
             inputButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),

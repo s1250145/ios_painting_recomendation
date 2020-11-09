@@ -7,6 +7,7 @@ target 'Paint_Recommend' do
 
   # Pods for Paint_Recommend
   pod 'SwiftyJSON'
+  pod 'MarqueeLabel'
 
   target 'Paint_RecommendTests' do
     inherit! :search_paths

@@ -17,7 +17,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         window = UIWindow(frame: UIScreen.main.bounds)
         let isBefore = UserDefaults.standard.bool(forKey: "isBefore")
-
+        
         if(isBefore == false) {
             UserDefaults.standard.set(true, forKey: "isBefore")
             APIClient().request(PaintDataAPIRequest()) { result in

@@ -11,9 +11,9 @@ import UIKit
 
 class CreateObject {
     static func label(title: String, size: CGFloat) -> UILabel {
-        let label = UILabel(frame: .zero)
+        let label = UILabel(frame: CGRect(x: 0, y: 0, width: 0, height: size))
         label.text = title
-        label.font = UIFont(name: "Palatino-Roman", size: size)
+        label.font = UIFont(name: "Palatino-Roman", size: size)!
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }

@@ -10,8 +10,6 @@ import UIKit
 
 class PaintCollectionViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UINavigationControllerDelegate {
     var paintDataSet = [PaintData]()
-
-    let sprash = SprashView(frame: .zero)
     let garally = CreateObject.collection()
 
     override func viewDidLoad() {
