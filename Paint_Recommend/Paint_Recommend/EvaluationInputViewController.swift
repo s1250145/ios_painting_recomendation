@@ -22,9 +22,11 @@ class EvaluationInputViewController: UIViewController, UIGestureRecognizerDelega
 
     let likePercent = CreateObject.normalLabel("???", size: 18, frame: CGRect(x: 0, y: 0, width: 50, height: 18))
 
+    // Fro send to API
     var feelingScore = 0
     var likeScore = 0.0
 
+    // from DetailVC
     var paintName = ""
 
     override func viewDidLoad() {
@@ -93,13 +95,14 @@ class EvaluationInputViewController: UIViewController, UIGestureRecognizerDelega
         popupView.addSubview(angry)
         angry.tag = 6
 
+        slider.center.x = popup_w/2
+        slider.center.y = likePercent.bottom+15
         popupView.addSubview(slider)
 
         NSLayoutConstraint.activate([
             submitButton.heightAnchor.constraint(equalToConstant: 45),
             submitButton.widthAnchor.constraint(equalToConstant: 260),
             submitButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            slider.centerXAnchor.constraint(equalTo: view.centerXAnchor),
 
             happy.topAnchor.constraint(equalTo: feelAttention.bottomAnchor, constant: 20),
             fear.topAnchor.constraint(equalTo: feelAttention.bottomAnchor, constant: 20),
@@ -115,8 +118,6 @@ class EvaluationInputViewController: UIViewController, UIGestureRecognizerDelega
             surprise.leftAnchor.constraint(equalTo: fear.rightAnchor, constant: -10),
             angry.leftAnchor.constraint(equalTo: disgust.rightAnchor, constant: -10),
 
-            slider.topAnchor.constraint(equalTo: likePercent.bottomAnchor, constant: 10),
-            slider.widthAnchor.constraint(equalToConstant: 260),
             submitButton.topAnchor.constraint(equalTo: likePercent.bottomAnchor, constant: 50)
         ])
     }

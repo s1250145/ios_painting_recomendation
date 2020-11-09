@@ -11,14 +11,6 @@ import UIKit
 import MarqueeLabel
 
 class CreateObject {
-    static func label(title: String, size: CGFloat) -> UILabel {
-        let label = UILabel(frame: CGRect(x: 0, y: 0, width: 0, height: size))
-        label.text = title
-        label.font = UIFont(name: "Palatino-Roman", size: size)!
-        label.translatesAutoresizingMaskIntoConstraints = false
-        return label
-    }
-
     static func autoscrollLabel(_ title: String, size: CGFloat, frame: CGRect) -> MarqueeLabel {
         let label = MarqueeLabel.init(frame: frame, duration: 8.0, fadeLength: 10.0)
         label.text = title
@@ -58,13 +50,12 @@ class CreateObject {
     }
 
     static func slider(minEmoji: String, maxEmoji: String) -> UISlider {
-        let slider = UISlider(frame: CGRect(x: 0, y: 0, width: 0, height: 20))
+        let slider = UISlider(frame: CGRect(x: 0, y: 0, width: 260, height: 20))
         slider.minimumValueImage = minEmoji.emojiToImage
         slider.maximumValueImage = maxEmoji.emojiToImage
         slider.minimumValue = 0.0
         slider.maximumValue = 1.0
         slider.value = 0.5
-        slider.translatesAutoresizingMaskIntoConstraints = false
         return slider
     }
 
