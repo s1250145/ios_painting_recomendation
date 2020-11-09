@@ -31,19 +31,18 @@ class PaintDetailViewController: UIViewController, UINavigationControllerDelegat
         view.addSubview(paint)
 
         let w = paint.bounds.size.width
-        let h = paint.bounds.size.height
 
-        let artTitle = MarqueeLabel.init(frame: CGRect(x: 20.0, y: h+130, width: w, height: 36), duration: 8.0, fadeLength: 10.0)
+        let artTitle = MarqueeLabel.init(frame: CGRect(x: 20.0, y: paint.bottom+130, width: w, height: 36), duration: 8.0, fadeLength: 10.0)
         artTitle.text = name
         artTitle.font = UIFont(name: "Palatino-Roman", size: 36)!
         view.addSubview(artTitle)
 
-        let artDate = UILabel(frame: CGRect(x: 20, y: h+130+artTitle.bounds.size.height+5, width: w, height: 24))
+        let artDate = UILabel(frame: CGRect(x: 20, y: artTitle.bottom+5, width: w, height: 24))
         artDate.text = date
         artDate.font = UIFont(name: "Palatino-Roman", size: 24)!
         view.addSubview(artDate)
 
-        let artistName = MarqueeLabel.init(frame: CGRect(x: 20.0, y: h+130+artTitle.bounds.size.height+5+artDate.bounds.size.height+5, width: w, height: 28), duration: 8.0, fadeLength: 10.0)
+        let artistName = MarqueeLabel.init(frame: CGRect(x: 20.0, y: artDate.bottom+5, width: w, height: 28), duration: 8.0, fadeLength: 10.0)
         artistName.text = artist
         artistName.font = UIFont(name: "Palatino-Roman", size: 28)!
         view.addSubview(artistName)

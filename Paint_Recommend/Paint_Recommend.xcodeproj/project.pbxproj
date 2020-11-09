@@ -19,6 +19,7 @@
 		4B78EEA825105773000CFCFF /* Paint_RecommendUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B78EEA725105773000CFCFF /* Paint_RecommendUITests.swift */; };
 		4B78EEB6251059EE000CFCFF /* PaintCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B78EEB5251059EE000CFCFF /* PaintCollectionViewController.swift */; };
 		4B8D9085251C5CB200D369D1 /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B8D9084251C5CB200D369D1 /* APIClient.swift */; };
+		4BD18C802559094200734A49 /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BD18C7F2559094200734A49 /* UIView+Extension.swift */; };
 		4BFB2E4C251D7F3C00093EDB /* PaintAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BFB2E4B251D7F3C00093EDB /* PaintAction.swift */; };
 		787AF6F78F923CEB92D53D5C /* Pods_Paint_RecommendTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 959A3B22CB4CFB4635668709 /* Pods_Paint_RecommendTests.framework */; };
 		9B99C799335017A4E260AD21 /* Pods_Paint_Recommend.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9E9AC663DCB4151D22ABB977 /* Pods_Paint_Recommend.framework */; };
@@ -61,6 +62,7 @@
 		4B78EEA925105773000CFCFF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4B78EEB5251059EE000CFCFF /* PaintCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaintCollectionViewController.swift; sourceTree = "<group>"; };
 		4B8D9084251C5CB200D369D1 /* APIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
+		4BD18C7F2559094200734A49 /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
 		4BFB2E4B251D7F3C00093EDB /* PaintAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaintAction.swift; sourceTree = "<group>"; };
 		5D7130341CF04F674525AE48 /* Pods-Paint_Recommend.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Paint_Recommend.release.xcconfig"; path = "Target Support Files/Pods-Paint_Recommend/Pods-Paint_Recommend.release.xcconfig"; sourceTree = "<group>"; };
 		73728DDE57CAFE11A783D3B3 /* Pods-Paint_RecommendTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Paint_RecommendTests.release.xcconfig"; path = "Target Support Files/Pods-Paint_RecommendTests/Pods-Paint_RecommendTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -135,6 +137,7 @@
 				4BFB2E4B251D7F3C00093EDB /* PaintAction.swift */,
 				4B5758ED2542B4E200A5E682 /* SprashView.swift */,
 				4B71C9A02558E07100585720 /* UIColor.swift */,
+				4BD18C7F2559094200734A49 /* UIView+Extension.swift */,
 				4B78EE8E25105773000CFCFF /* Assets.xcassets */,
 				4B78EE9025105773000CFCFF /* LaunchScreen.storyboard */,
 				4B78EE9325105773000CFCFF /* Info.plist */,
@@ -429,6 +432,7 @@
 				4BFB2E4C251D7F3C00093EDB /* PaintAction.swift in Sources */,
 				4B1BB96E25106B11000EF7AF /* PaintDetailViewController.swift in Sources */,
 				4B8D9085251C5CB200D369D1 /* APIClient.swift in Sources */,
+				4BD18C802559094200734A49 /* UIView+Extension.swift in Sources */,
 				4B282D05252EE0B200D1C4D8 /* EvaluationInputViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
