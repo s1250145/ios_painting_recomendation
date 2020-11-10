@@ -17,43 +17,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         window = UIWindow(frame: UIScreen.main.bounds)
         let isBefore = UserDefaults.standard.bool(forKey: "isBefore")
-        
+
         if(isBefore == false) {
             UserDefaults.standard.set(true, forKey: "isBefore")
-            APIClient().request(PaintDataAPIRequest()) { result in
-                switch(result) {
-                case let .success(model):
-                    PaintAction.save(model, key: "PaintDataSet") // 絵画データセット
-                    PaintAction.save([PaintEvaluationData](), key: "PaintEvaluationData") // 評価データの初期化
-
-                    // main threadで実行
-                    DispatchQueue.main.sync {
-                        let firstVC = PaintCollectionViewController()
-                        self.navView = UINavigationController(rootViewController: firstVC)
-                        self.window?.rootViewController = self.navView
-                        self.window?.makeKeyAndVisible()
-                    }
-
-                case let .failure(error):
-                    switch error {
-                    case let .server(status):
-                        print("Error status code: \(status)")
-                    case .noResponse:
-                        print("Error no response")
-                    case let .unknown(e):
-                        print("Error unknown \(e)")
-                    default:
-                        print("Error \(error)")
-                    }
-                }
-            }
-
+            let loadVC = LoadingViewController()
+            navView = UINavigationController(rootViewController: loadVC)
+            window?.rootViewController = navView
         } else {
             let firstVC = PaintCollectionViewController()
             navView = UINavigationController(rootViewController: firstVC)
             window?.rootViewController = navView
-            window?.makeKeyAndVisible()
         }
+        window?.makeKeyAndVisible()
         return true
     }
 

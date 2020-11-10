@@ -11,6 +11,7 @@
 		4B1BB9702510761B000EF7AF /* CreateObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B1BB96F2510761B000EF7AF /* CreateObject.swift */; };
 		4B282D05252EE0B200D1C4D8 /* EvaluationInputViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B282D04252EE0B200D1C4D8 /* EvaluationInputViewController.swift */; };
 		4B5758EE2542B4E200A5E682 /* SprashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B5758ED2542B4E200A5E682 /* SprashView.swift */; };
+		4B59F765255A638E00C75BFD /* LoadingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B59F764255A638E00C75BFD /* LoadingViewController.swift */; };
 		4B71C9A12558E07100585720 /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B71C9A02558E07100585720 /* UIColor.swift */; };
 		4B78EE8825105771000CFCFF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B78EE8725105771000CFCFF /* AppDelegate.swift */; };
 		4B78EE8F25105773000CFCFF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4B78EE8E25105773000CFCFF /* Assets.xcassets */; };
@@ -48,6 +49,7 @@
 		4B1BB96F2510761B000EF7AF /* CreateObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateObject.swift; sourceTree = "<group>"; };
 		4B282D04252EE0B200D1C4D8 /* EvaluationInputViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EvaluationInputViewController.swift; sourceTree = "<group>"; };
 		4B5758ED2542B4E200A5E682 /* SprashView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SprashView.swift; sourceTree = "<group>"; };
+		4B59F764255A638E00C75BFD /* LoadingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingViewController.swift; sourceTree = "<group>"; };
 		4B71C9A02558E07100585720 /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
 		4B78EE8425105771000CFCFF /* Paint_Recommend.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Paint_Recommend.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4B78EE8725105771000CFCFF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -129,6 +131,7 @@
 			isa = PBXGroup;
 			children = (
 				4B78EE8725105771000CFCFF /* AppDelegate.swift */,
+				4B59F764255A638E00C75BFD /* LoadingViewController.swift */,
 				4B78EEB5251059EE000CFCFF /* PaintCollectionViewController.swift */,
 				4B1BB96D25106B11000EF7AF /* PaintDetailViewController.swift */,
 				4B282D04252EE0B200D1C4D8 /* EvaluationInputViewController.swift */,
@@ -432,6 +435,7 @@
 				4BFB2E4C251D7F3C00093EDB /* PaintAction.swift in Sources */,
 				4B1BB96E25106B11000EF7AF /* PaintDetailViewController.swift in Sources */,
 				4B8D9085251C5CB200D369D1 /* APIClient.swift in Sources */,
+				4B59F765255A638E00C75BFD /* LoadingViewController.swift in Sources */,
 				4BD18C802559094200734A49 /* UIView+Extension.swift in Sources */,
 				4B282D05252EE0B200D1C4D8 /* EvaluationInputViewController.swift in Sources */,
 			);

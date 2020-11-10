@@ -15,7 +15,7 @@ class PaintCollectionViewController: UIViewController, UICollectionViewDelegate,
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
-        
+
         self.title = "Garally"
         self.navigationController?.navigationBar.titleTextAttributes = [.font: UIFont.init(name: "AmericanTypewriter", size: 30) as Any]
         self.navigationController?.navigationBar.barTintColor = UIColor.q4.main
@@ -34,6 +34,10 @@ class PaintCollectionViewController: UIViewController, UICollectionViewDelegate,
             garally.widthAnchor.constraint(equalToConstant: view.frame.width),
             garally.heightAnchor.constraint(equalToConstant: view.frame.height)
             ])
+    }
+
+    override func viewWillAppear(_ animated: Bool) {
+        self.navigationController?.setNavigationBarHidden(false, animated: true)
     }
 
     func callBack() {
