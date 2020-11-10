@@ -12,7 +12,7 @@ import MarqueeLabel
 
 class CreateObject {
     static func autoscrollLabel(_ title: String, size: CGFloat, frame: CGRect) -> MarqueeLabel {
-        let label = MarqueeLabel.init(frame: frame, duration: 8.0, fadeLength: 10.0)
+        let label = MarqueeLabel.init(frame: frame, duration: 10.0, fadeLength: 10.0)
         label.text = title
         label.font = UIFont(name: "Palatino-Roman", size: size)
         return label
