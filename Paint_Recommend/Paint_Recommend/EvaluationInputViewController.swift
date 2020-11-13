@@ -99,6 +99,8 @@ class EvaluationInputViewController: UIViewController, UIGestureRecognizerDelega
         slider.center.y = likePercent.bottom+15
         popupView.addSubview(slider)
 
+        popupView.isUserInteractionEnabled = true
+
         NSLayoutConstraint.activate([
             submitButton.heightAnchor.constraint(equalToConstant: 45),
             submitButton.widthAnchor.constraint(equalToConstant: 260),
@@ -118,19 +120,18 @@ class EvaluationInputViewController: UIViewController, UIGestureRecognizerDelega
             surprise.leftAnchor.constraint(equalTo: fear.rightAnchor, constant: -10),
             angry.leftAnchor.constraint(equalTo: disgust.rightAnchor, constant: -10),
 
-            submitButton.topAnchor.constraint(equalTo: likePercent.bottomAnchor, constant: 50)
+            submitButton.topAnchor.constraint(equalTo: popupView.bottomAnchor, constant: -100)
         ])
     }
 
     @objc func didTappedSubmitButton(_ sender: UIButton) {
         // 評価情報の記録
-        if feelingScore == 0 || likePercent.text == "" {
+        if feelingScore == 0 || likePercent.text == "???" {
             showAlert("Please input all", 0.5)
         } else {
             var paintEvaluationData :[PaintEvaluationData] = PaintAction.get(key: "PaintEvaluationData")
             paintEvaluationData.append(PaintEvaluationData(imageName: paintName, feelingScore: feelingScore, likeScore: likeScore))
             PaintAction.save(paintEvaluationData, key: "PaintEvaluationData")
-            showAlert("Submit complete", 0.3)
             dismiss(animated: true, completion: nil)
         }
     }
