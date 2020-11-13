@@ -15,11 +15,15 @@ class PaintCollectionViewController: UIViewController, UICollectionViewDelegate,
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
-        self.navigationItem.setHidesBackButton(true, animated: false)
+        navigationItem.setHidesBackButton(true, animated: false)
 
         self.title = "Garally"
         self.navigationController?.navigationBar.titleTextAttributes = [.font: UIFont.init(name: "AmericanTypewriter", size: 30) as Any]
         self.navigationController?.navigationBar.barTintColor = UIColor.q4.main
+
+        let trashBarButtonItem = UIBarButtonItem(barButtonSystemItem: .trash, target: self, action: #selector(trashButtonTapped(_:)))
+        self.navigationItem.rightBarButtonItems = [trashBarButtonItem]
+        navigationItem.rightBarButtonItem?.tintColor = .black
 
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
         navigationItem.backBarButtonItem?.tintColor = .black
@@ -39,6 +43,19 @@ class PaintCollectionViewController: UIViewController, UICollectionViewDelegate,
 
     override func viewWillAppear(_ animated: Bool) {
         self.navigationController?.setNavigationBarHidden(false, animated: true)
+    }
+
+    @objc func trashButtonTapped(_ sender: UIBarButtonItem) {
+        // Reset evaluation data
+        let alert = UIAlertController(title: "Data Reset", message: "Reset your all evaluation data", preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "OK", style: .default, handler: { (action: UIAlertAction!) -> Void in
+            // Reset process
+            PaintAction.save([PaintEvaluationData](), key: "PaintEvaluationData")
+        })
+        let cancelAction = UIAlertAction(title: "cancel", style: .cancel, handler: nil)
+        alert.addAction(cancelAction)
+        alert.addAction(okAction)
+        present(alert, animated: true, completion:  nil)
     }
 
     func callBack() {
