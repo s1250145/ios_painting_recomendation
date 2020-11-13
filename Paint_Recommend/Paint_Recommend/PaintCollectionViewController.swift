@@ -15,6 +15,7 @@ class PaintCollectionViewController: UIViewController, UICollectionViewDelegate,
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
+        self.navigationItem.setHidesBackButton(true, animated: false)
 
         self.title = "Garally"
         self.navigationController?.navigationBar.titleTextAttributes = [.font: UIFont.init(name: "AmericanTypewriter", size: 30) as Any]
