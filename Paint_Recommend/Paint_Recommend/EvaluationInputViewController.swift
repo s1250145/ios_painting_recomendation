@@ -194,9 +194,4 @@ extension UISlider {
     override open func beginTracking(_ touch: UITouch, with event: UIEvent?) -> Bool {
         return true
     }
-
-    override open func point(inside point: CGPoint, with event: UIEvent?) -> Bool {
-        bounds.size.height += 10
-        return bounds.contains(point)
-    }
 }
