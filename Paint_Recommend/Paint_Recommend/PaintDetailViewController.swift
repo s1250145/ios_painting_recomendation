@@ -67,9 +67,14 @@ class PaintDetailViewController: UIViewController, UINavigationControllerDelegat
     func navigationController(_ navigationController: UINavigationController, willShow viewController: UIViewController, animated: Bool) {
         // 評価の送信とレコメンデーション結果からリスト更新
         if viewController is PaintCollectionViewController {
-            let paintEvaluationData: [PaintEvaluationData] = PaintAction.get(key: "PaintEvaluationData")
+            var paintEvaluationData: [PaintEvaluationData] = PaintAction.get(key: "PaintEvaluationData")
 
             if paintEvaluationData.count > 4 {
+                if paintEvaluationData.count > 14 {
+                    // Cleaning old evaluation data
+                    paintEvaluationData.removeSubrange(0...4)
+                    PaintAction.save(paintEvaluationData, key: "PaintEvaluationData")
+                }
                 // POSTリクエスト送信
                 var request = PaintEvaluationDataAPIRequest()
                 request.evaluations = PaintAction.makeRequestDataSet(paintEvaluationData)

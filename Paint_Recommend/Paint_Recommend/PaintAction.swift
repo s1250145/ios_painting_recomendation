@@ -23,7 +23,7 @@ class PaintAction {
         guard let data = try? JSONEncoder().encode(saveData) else { return }
         UserDefaults.standard.set(data, forKey: key)
     }
-
+    
     static func makeRequestDataSet(_ data: [PaintEvaluationData]) -> Dictionary<String, Any> {
         var feel: [[String: Any]] = []
         var like: [[String: Any]] = []

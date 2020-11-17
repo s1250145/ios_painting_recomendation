@@ -147,7 +147,6 @@ struct PaintEvaluationDataAPIRequest: Requestable {
         guard  let evaluations = evaluations else {
             return nil
         }
-        print(evaluations)
         return try! JSONSerialization.data(withJSONObject: evaluations, options: [])
     }
 

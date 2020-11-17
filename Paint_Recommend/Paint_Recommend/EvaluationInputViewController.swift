@@ -22,7 +22,7 @@ class EvaluationInputViewController: UIViewController, UIGestureRecognizerDelega
 
     let likePercent = CreateObject.normalLabel("???", size: 18, frame: CGRect(x: 0, y: 0, width: 50, height: 18))
 
-    // Fro send to API
+    // Send to API
     var feelingScore = 0
     var likeScore = 0.0
 
