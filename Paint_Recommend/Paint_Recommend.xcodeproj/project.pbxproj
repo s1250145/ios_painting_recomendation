@@ -112,7 +112,6 @@
 		4B78EE7B25105771000CFCFF = {
 			isa = PBXGroup;
 			children = (
-				4B6A94182564CF8D002FA5A0 /* R.generated.swift */,
 				4B78EE8625105771000CFCFF /* Paint_Recommend */,
 				4B78EE9B25105773000CFCFF /* Paint_RecommendTests */,
 				4B78EEA625105773000CFCFF /* Paint_RecommendUITests */,
@@ -135,6 +134,7 @@
 		4B78EE8625105771000CFCFF /* Paint_Recommend */ = {
 			isa = PBXGroup;
 			children = (
+				4B6A94182564CF8D002FA5A0 /* R.generated.swift */,
 				4B78EE8725105771000CFCFF /* AppDelegate.swift */,
 				4B59F764255A638E00C75BFD /* LoadingViewController.swift */,
 				4B78EEB5251059EE000CFCFF /* PaintCollectionViewController.swift */,
