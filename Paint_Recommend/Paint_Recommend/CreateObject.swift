@@ -43,7 +43,6 @@ class CreateObject {
         button.setTitle(title, for: .normal)
         button.setTitleColor(.black, for: .normal)
         button.titleLabel?.font = UIFont(name: "AmericanTypewriter", size: 15)
-//        button.titleLabel?.font = 
         button.backgroundColor = UIColor.q4.main
         button.layer.cornerRadius = 20
         button.translatesAutoresizingMaskIntoConstraints = false
