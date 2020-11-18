@@ -12,6 +12,7 @@
 		4B282D05252EE0B200D1C4D8 /* EvaluationInputViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B282D04252EE0B200D1C4D8 /* EvaluationInputViewController.swift */; };
 		4B5758EE2542B4E200A5E682 /* SprashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B5758ED2542B4E200A5E682 /* SprashView.swift */; };
 		4B59F765255A638E00C75BFD /* LoadingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B59F764255A638E00C75BFD /* LoadingViewController.swift */; };
+		4B6A94192564CF8D002FA5A0 /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B6A94182564CF8D002FA5A0 /* R.generated.swift */; };
 		4B71C9A12558E07100585720 /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B71C9A02558E07100585720 /* UIColor.swift */; };
 		4B78EE8825105771000CFCFF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B78EE8725105771000CFCFF /* AppDelegate.swift */; };
 		4B78EE8F25105773000CFCFF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4B78EE8E25105773000CFCFF /* Assets.xcassets */; };
@@ -51,6 +52,7 @@
 		4B282D04252EE0B200D1C4D8 /* EvaluationInputViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EvaluationInputViewController.swift; sourceTree = "<group>"; };
 		4B5758ED2542B4E200A5E682 /* SprashView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SprashView.swift; sourceTree = "<group>"; };
 		4B59F764255A638E00C75BFD /* LoadingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingViewController.swift; sourceTree = "<group>"; };
+		4B6A94182564CF8D002FA5A0 /* R.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = R.generated.swift; sourceTree = "<group>"; };
 		4B71C9A02558E07100585720 /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
 		4B78EE8425105771000CFCFF /* Paint_Recommend.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Paint_Recommend.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4B78EE8725105771000CFCFF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -110,6 +112,7 @@
 		4B78EE7B25105771000CFCFF = {
 			isa = PBXGroup;
 			children = (
+				4B6A94182564CF8D002FA5A0 /* R.generated.swift */,
 				4B78EE8625105771000CFCFF /* Paint_Recommend */,
 				4B78EE9B25105773000CFCFF /* Paint_RecommendTests */,
 				4B78EEA625105773000CFCFF /* Paint_RecommendUITests */,
@@ -200,6 +203,7 @@
 			buildConfigurationList = 4B78EEAC25105773000CFCFF /* Build configuration list for PBXNativeTarget "Paint_Recommend" */;
 			buildPhases = (
 				EE01C8DE414D33CFE29217AF /* [CP] Check Pods Manifest.lock */,
+				4B6A94172564CEE0002FA5A0 /* ShellScript */,
 				4B78EE8025105771000CFCFF /* Sources */,
 				4B78EE8125105771000CFCFF /* Frameworks */,
 				4B78EE8225105771000CFCFF /* Resources */,
@@ -323,6 +327,25 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		4B6A94172564CEE0002FA5A0 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"$TEMP_DIR/rswift-lastrun",
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				$SRCROOT/R.generated.swift,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"$PODS_ROOT/R.swift/rswift\" generate \"$SRCROOT/R.generated.swift\"\n";
+		};
 		4E365941808DFC0E97D90100 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -436,6 +459,7 @@
 				4B78EEB6251059EE000CFCFF /* PaintCollectionViewController.swift in Sources */,
 				4B5758EE2542B4E200A5E682 /* SprashView.swift in Sources */,
 				4B71C9A12558E07100585720 /* UIColor.swift in Sources */,
+				4B6A94192564CF8D002FA5A0 /* R.generated.swift in Sources */,
 				4BFB2E4C251D7F3C00093EDB /* PaintAction.swift in Sources */,
 				4B1BB96E25106B11000EF7AF /* PaintDetailViewController.swift in Sources */,
 				4B8D9085251C5CB200D369D1 /* APIClient.swift in Sources */,
