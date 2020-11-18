@@ -8,7 +8,7 @@ Paint_Recommend/Paint_Recommend.xcodeproj/project.xcworkspace/xcuserdata/miyucg.
 Paint_Recommend/Paint_Recommend.xcodeproj/*
 Paint_Recommend/Paint_Recommend.xcodeproj/project.pbxproj
 Paint_Recommend/Paint_Recommend.xcodeproj/project.xcworkspace/*
-/Paint_Recommend/Paint_Recommend/R.generated.swift
+Paint_Recommend/Paint_Recommend/R.generated.swift
 *.generated.swift
 
 # CocoaPod
