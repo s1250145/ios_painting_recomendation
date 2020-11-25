@@ -21,10 +21,11 @@ class PaintDetailViewController: UIViewController, UINavigationControllerDelegat
     var age: String = ""
     var imageName: String = ""
 
-    // check submit or cancel
-    var isSubmit = false
-
+    // popup view
     let inputFieldView = InputView()
+
+    // check submit
+    var isSubmit = false
 
     var childCallBack: (() -> Void)?
 

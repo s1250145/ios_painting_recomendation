@@ -11,7 +11,7 @@ target 'Paint_Recommend' do
   pod 'NVActivityIndicatorView'
   pod 'R.swift'
   pod 'DJSemiModalViewController'
-  
+    
   target 'Paint_RecommendTests' do
     inherit! :search_paths
     # Pods for testing

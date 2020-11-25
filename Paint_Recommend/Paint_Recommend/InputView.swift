@@ -32,20 +32,20 @@ class InputView: UIView {
 
         let title = CreateObject.normalLabel("How do you like feel?", size: 24, frame: CGRect(x: 0, y: 20, width: 0, height: 24))
         title.sizeToFit()
-        title.center.x = w/2
+        title.center.x = w/2-20
         self.addSubview(title)
 
         let feelAttention = CreateObject.normalLabel("please choose one.", size: 14, frame: CGRect(x: 0, y: title.bottom+20, width: 0, height: 14))
         feelAttention.sizeToFit()
-        feelAttention.center.x = w/2
+        feelAttention.center.x = w/2-20
         self.addSubview(feelAttention)
 
         let likeAttention = CreateObject.normalLabel("please select your like percentage", size: 14, frame: CGRect(x: 0, y: 300, width: 0, height: 14))
         likeAttention.sizeToFit()
-        likeAttention.center.x = w/2
+        likeAttention.center.x = w/2-20
         self.addSubview(likeAttention)
 
-        likePercent.center.x = w/2
+        likePercent.center.x = w/2-20
         likePercent.center.y = likeAttention.bottom+15
         likePercent.textAlignment = .center
         self.addSubview(likePercent)
@@ -71,7 +71,7 @@ class InputView: UIView {
         self.addSubview(angry)
         angry.tag = 6
 
-        slider.center.x = w/2
+        slider.center.x = w/2-20
         slider.center.y = likePercent.bottom+15
         self.addSubview(slider)
 

@@ -21,7 +21,6 @@
 		4B78EEB6251059EE000CFCFF /* PaintCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B78EEB5251059EE000CFCFF /* PaintCollectionViewController.swift */; };
 		4B8D9085251C5CB200D369D1 /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B8D9084251C5CB200D369D1 /* APIClient.swift */; };
 		4BC23F55256E285B002EEDBC /* InputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BC23F54256E285B002EEDBC /* InputView.swift */; };
-		4BCF1F9925639A92006E5640 /* GarallyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BCF1F9825639A92006E5640 /* GarallyViewController.swift */; };
 		4BD18C802559094200734A49 /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BD18C7F2559094200734A49 /* UIView+Extension.swift */; };
 		4BFB2E4C251D7F3C00093EDB /* PaintAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BFB2E4B251D7F3C00093EDB /* PaintAction.swift */; };
 		787AF6F78F923CEB92D53D5C /* Pods_Paint_RecommendTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 959A3B22CB4CFB4635668709 /* Pods_Paint_RecommendTests.framework */; };
@@ -67,7 +66,6 @@
 		4B78EEB5251059EE000CFCFF /* PaintCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaintCollectionViewController.swift; sourceTree = "<group>"; };
 		4B8D9084251C5CB200D369D1 /* APIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
 		4BC23F54256E285B002EEDBC /* InputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputView.swift; sourceTree = "<group>"; };
-		4BCF1F9825639A92006E5640 /* GarallyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GarallyViewController.swift; sourceTree = "<group>"; };
 		4BD18C7F2559094200734A49 /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
 		4BFB2E4B251D7F3C00093EDB /* PaintAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaintAction.swift; sourceTree = "<group>"; };
 		5D7130341CF04F674525AE48 /* Pods-Paint_Recommend.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Paint_Recommend.release.xcconfig"; path = "Target Support Files/Pods-Paint_Recommend/Pods-Paint_Recommend.release.xcconfig"; sourceTree = "<group>"; };
@@ -138,7 +136,6 @@
 				4B78EE8725105771000CFCFF /* AppDelegate.swift */,
 				4B59F764255A638E00C75BFD /* LoadingViewController.swift */,
 				4B78EEB5251059EE000CFCFF /* PaintCollectionViewController.swift */,
-				4BCF1F9825639A92006E5640 /* GarallyViewController.swift */,
 				4B1BB96D25106B11000EF7AF /* PaintDetailViewController.swift */,
 				4BC23F54256E285B002EEDBC /* InputView.swift */,
 				4B1BB96F2510761B000EF7AF /* CreateObject.swift */,
@@ -454,7 +451,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				4B1BB9702510761B000EF7AF /* CreateObject.swift in Sources */,
-				4BCF1F9925639A92006E5640 /* GarallyViewController.swift in Sources */,
 				4B78EE8825105771000CFCFF /* AppDelegate.swift in Sources */,
 				4B78EEB6251059EE000CFCFF /* PaintCollectionViewController.swift in Sources */,
 				4BC23F55256E285B002EEDBC /* InputView.swift in Sources */,
