@@ -9,10 +9,7 @@
 import Foundation
 import UIKit
 
-import UIKit
-
 extension UIView {
-
     var top : CGFloat{
         get{
             return self.frame.origin.y

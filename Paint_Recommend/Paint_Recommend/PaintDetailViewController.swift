@@ -8,16 +8,23 @@
 
 import UIKit
 import MarqueeLabel
+import DJSemiModalViewController
 
 class PaintDetailViewController: UIViewController, UINavigationControllerDelegate {
     var paint = UIImageView(frame: CGRect(x: UIScreen.main.bounds.size.width*0.05, y: 100, width: UIScreen.main.bounds.size.width*0.9, height: 400))
 
+    // from CollectionVC
     var name: String = ""
     var date: String = ""
     var artist: String = ""
     var born: String = ""
     var age: String = ""
     var imageName: String = ""
+
+    // check submit or cancel
+    var isSubmit = false
+
+    let inputFieldView = InputView()
 
     var childCallBack: (() -> Void)?
 
@@ -57,16 +64,46 @@ class PaintDetailViewController: UIViewController, UINavigationControllerDelegat
     }
 
     @objc func didTappedInputButton(_ sender: UIButton) {
-        let vc = EvaluationInputViewController()
-        vc.modalPresentationStyle = .overFullScreen
-        vc.paintName = imageName
-        self.present(vc, animated: true, completion: nil)
+        // 評価ポップアップの表示
+        let controller = DJSemiModalViewController()
+        controller.minHeight = 430
+        controller.maxWidth = 340
+
+        controller.closeButton.setTitle("SUBMIT", for: .normal)
+        controller.closeButton.backgroundColor = UIColor.q4.main
+        controller.closeButton.addTarget(self, action: #selector(didTappedSubmitButton(_:)), for: .touchUpInside)
+
+        controller.addArrangedSubview(view: inputFieldView, height: 430)
+
+        controller.presentOn(presentingViewController: self, animated: true, onDismiss: nil)
+    }
+
+    @objc func didTappedSubmitButton(_ sender: UIButton) {
+        // 評価情報の記録
+        if inputFieldView.feelingScore == 0 || inputFieldView.likePercent.text == "???" {
+            showAlert("Failed.", "Please input all items.", 0.4)
+        } else {
+            var paintEvaluationData :[PaintEvaluationData] = PaintAction.get(key: "PaintEvaluationData")
+            paintEvaluationData.append(PaintEvaluationData(imageName: imageName, feelingScore: inputFieldView.feelingScore, likeScore: inputFieldView.likeScore))
+            PaintAction.save(paintEvaluationData, key: "PaintEvaluationData")
+            isSubmit = true
+            showAlert("Success!", "", 0.4)
+        }
+    }
+
+    func showAlert(_ title: String, _ msg: String, _ time: Double) {
+        let alert = UIAlertController(title: title, message: msg, preferredStyle: .alert)
+        self.present(alert, animated: true, completion: { () in
+            DispatchQueue.main.asyncAfter(deadline: .now() + time, execute: {
+                alert.dismiss(animated: true, completion: nil)
+            })
+        })
     }
 
     // Handling from detailView to collectionView
     func navigationController(_ navigationController: UINavigationController, willShow viewController: UIViewController, animated: Bool) {
         // 評価の送信とレコメンデーション結果からリスト更新
-        if viewController is PaintCollectionViewController {
+        if isSubmit && viewController is PaintCollectionViewController {
             var paintEvaluationData: [PaintEvaluationData] = PaintAction.get(key: "PaintEvaluationData")
 
             if paintEvaluationData.count > 4 {

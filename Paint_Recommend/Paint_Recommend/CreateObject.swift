@@ -77,7 +77,7 @@ extension UIButton {
         guard let imageSize = self.imageView?.image?.size else { return }
 
         let labelString = NSString(string: self.titleLabel!.text!)
-        let labelSize = labelString.size(withAttributes: [NSAttributedString.Key.font: self.titleLabel!.font])
+        let labelSize = labelString.size(withAttributes: [NSAttributedString.Key.font: self.titleLabel!.font!])
 
         let verticalMergin = (self.frame.height - imageSize.height - labelSize.height) / 2.0
 
@@ -123,5 +123,11 @@ extension String {
 
     var emojiToImage: UIImage? {
         return emojiToImage(text: self, size: 20)
+    }
+}
+
+extension UISlider {
+    override open func beginTracking(_ touch: UITouch, with event: UIEvent?) -> Bool {
+        return true
     }
 }
