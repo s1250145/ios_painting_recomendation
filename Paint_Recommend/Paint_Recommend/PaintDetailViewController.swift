@@ -64,6 +64,7 @@ class PaintDetailViewController: UIViewController, UINavigationControllerDelegat
             ])
     }
 
+    let customView = CustomViewController(nibName: "CustomViewController", bundle: nil)
     @objc func didTappedInputButton(_ sender: UIButton) {
         // 評価ポップアップの表示
         let controller = DJSemiModalViewController()
@@ -74,18 +75,18 @@ class PaintDetailViewController: UIViewController, UINavigationControllerDelegat
         controller.closeButton.backgroundColor = UIColor.q4.main
         controller.closeButton.addTarget(self, action: #selector(didTappedSubmitButton(_:)), for: .touchUpInside)
 
-        controller.addArrangedSubview(view: inputFieldView, height: 430)
+        controller.addArrangedSubview(view: customView.view, height: 430)
 
         controller.presentOn(presentingViewController: self, animated: true, onDismiss: nil)
     }
 
     @objc func didTappedSubmitButton(_ sender: UIButton) {
         // 評価情報の記録
-        if inputFieldView.feelingScore == 0 || inputFieldView.likePercent.text == "???" {
+        if customView.feel == 0 || customView.percent.text == "???" {
             showAlert("Failed.", "Please input all items.", 0.4)
         } else {
             var paintEvaluationData :[PaintEvaluationData] = PaintAction.get(key: "PaintEvaluationData")
-            paintEvaluationData.append(PaintEvaluationData(imageName: imageName, feelingScore: inputFieldView.feelingScore, likeScore: inputFieldView.likeScore))
+            paintEvaluationData.append(PaintEvaluationData(imageName: imageName, feelingScore: customView.feel, likeScore: customView.like))
             PaintAction.save(paintEvaluationData, key: "PaintEvaluationData")
             isSubmit = true
             showAlert("Success!", "", 0.4)
