@@ -40,19 +40,19 @@ class PaintDetailViewController: UIViewController, UINavigationControllerDelegat
 
         let w = paint.bounds.size.width
 
-        let artTitle = CreateObject.autoscrollLabel(name, size: 36, frame: CGRect(x: 20, y: paint.bottom+10, width: w, height: 36))
+        let artTitle = Generate.autoscrollLabel(name, size: 36, frame: CGRect(x: 20, y: paint.bottom+10, width: w, height: 36))
         view.addSubview(artTitle)
 
-        let artDate = CreateObject.normalLabel(date, size: 24, frame: CGRect(x: 20, y: artTitle.bottom+5, width: w, height: 24))
+        let artDate = Generate.normalLabel(date, size: 24, frame: CGRect(x: 20, y: artTitle.bottom+5, width: w, height: 24))
         view.addSubview(artDate)
 
-        let artistName = CreateObject.autoscrollLabel(artist, size: 28, frame: CGRect(x: 20, y: artDate.bottom+5, width: w, height: 28))
+        let artistName = Generate.autoscrollLabel(artist, size: 28, frame: CGRect(x: 20, y: artDate.bottom+5, width: w, height: 28))
         view.addSubview(artistName)
 
-        let bornIn = CreateObject.normalLabel(born+", "+age, size: 18, frame: CGRect(x: 20, y: artistName.bottom+5, width: w, height: 18))
+        let bornIn = Generate.normalLabel(born+", "+age, size: 18, frame: CGRect(x: 20, y: artistName.bottom+5, width: w, height: 18))
         view.addSubview(bornIn)
 
-        let inputButton = CreateObject.roundButton(title: "Input evaluation")
+        let inputButton = Generate.roundButton(title: "Input evaluation")
         inputButton.addTarget(self, action: #selector(didTappedInputButton(_:)), for: .touchUpInside)
         view.addSubview(inputButton)
 

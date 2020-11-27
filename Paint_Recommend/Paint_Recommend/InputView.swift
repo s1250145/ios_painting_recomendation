@@ -9,16 +9,16 @@
 import UIKit
 
 class InputView: UIView {
-    let happy = CreateObject.feelInputButton(title: "Happy")
-    let fear = CreateObject.feelInputButton(title: "Fear")
-    let surprise = CreateObject.feelInputButton(title: "Surprise")
-    let sad = CreateObject.feelInputButton(title: "Sad")
-    let disgust = CreateObject.feelInputButton(title: "Disgust")
-    let angry = CreateObject.feelInputButton(title: "Angry")
+    let happy = Generate.feelInputButton(title: "Happy")
+    let fear = Generate.feelInputButton(title: "Fear")
+    let surprise = Generate.feelInputButton(title: "Surprise")
+    let sad = Generate.feelInputButton(title: "Sad")
+    let disgust = Generate.feelInputButton(title: "Disgust")
+    let angry = Generate.feelInputButton(title: "Angry")
 
-    let slider = CreateObject.slider(minEmoji: "🚫", maxEmoji: "💓")
+    let slider = Generate.slider(minEmoji: "🚫", maxEmoji: "💓")
 
-    let likePercent = CreateObject.normalLabel("???", size: 18, frame: CGRect(x: 0, y: 0, width: 50, height: 18))
+    let likePercent = Generate.normalLabel("???", size: 18, frame: CGRect(x: 0, y: 0, width: 50, height: 18))
 
     // Send to API
     var feelingScore = 0
@@ -30,17 +30,17 @@ class InputView: UIView {
 
         let w = self.frame.size.width
 
-        let title = CreateObject.normalLabel("How do you like feel?", size: 24, frame: CGRect(x: 0, y: 20, width: 0, height: 24))
+        let title = Generate.normalLabel("How do you like feel?", size: 24, frame: CGRect(x: 0, y: 20, width: 0, height: 24))
         title.sizeToFit()
         title.center.x = w/2-20
         self.addSubview(title)
 
-        let feelAttention = CreateObject.normalLabel("please choose one.", size: 14, frame: CGRect(x: 0, y: title.bottom+20, width: 0, height: 14))
+        let feelAttention = Generate.normalLabel("please choose one.", size: 14, frame: CGRect(x: 0, y: title.bottom+20, width: 0, height: 14))
         feelAttention.sizeToFit()
         feelAttention.center.x = w/2-20
         self.addSubview(feelAttention)
 
-        let likeAttention = CreateObject.normalLabel("please select your like percentage", size: 14, frame: CGRect(x: 0, y: 300, width: 0, height: 14))
+        let likeAttention = Generate.normalLabel("please select your like percentage", size: 14, frame: CGRect(x: 0, y: 300, width: 0, height: 14))
         likeAttention.sizeToFit()
         likeAttention.center.x = w/2-20
         self.addSubview(likeAttention)

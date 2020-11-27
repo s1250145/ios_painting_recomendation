@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 import MarqueeLabel
 
-class CreateObject {
+class Generate {
     static func autoscrollLabel(_ title: String, size: CGFloat, frame: CGRect) -> MarqueeLabel {
         let label = MarqueeLabel.init(frame: frame, duration: 10.0, fadeLength: 10.0)
         label.text = title

@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		4B1BB96E25106B11000EF7AF /* PaintDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B1BB96D25106B11000EF7AF /* PaintDetailViewController.swift */; };
-		4B1BB9702510761B000EF7AF /* CreateObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B1BB96F2510761B000EF7AF /* CreateObject.swift */; };
+		4B1BB9702510761B000EF7AF /* Generate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B1BB96F2510761B000EF7AF /* Generate.swift */; };
 		4B5758EE2542B4E200A5E682 /* SprashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B5758ED2542B4E200A5E682 /* SprashView.swift */; };
 		4B59F765255A638E00C75BFD /* LoadingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B59F764255A638E00C75BFD /* LoadingViewController.swift */; };
 		4B6A94192564CF8D002FA5A0 /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B6A94182564CF8D002FA5A0 /* R.generated.swift */; };
@@ -47,7 +47,7 @@
 
 /* Begin PBXFileReference section */
 		4B1BB96D25106B11000EF7AF /* PaintDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaintDetailViewController.swift; sourceTree = "<group>"; };
-		4B1BB96F2510761B000EF7AF /* CreateObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateObject.swift; sourceTree = "<group>"; };
+		4B1BB96F2510761B000EF7AF /* Generate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Generate.swift; sourceTree = "<group>"; };
 		4B5758ED2542B4E200A5E682 /* SprashView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SprashView.swift; sourceTree = "<group>"; };
 		4B59F764255A638E00C75BFD /* LoadingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingViewController.swift; sourceTree = "<group>"; };
 		4B6A94182564CF8D002FA5A0 /* R.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = R.generated.swift; sourceTree = "<group>"; };
@@ -138,7 +138,7 @@
 				4B78EEB5251059EE000CFCFF /* PaintCollectionViewController.swift */,
 				4B1BB96D25106B11000EF7AF /* PaintDetailViewController.swift */,
 				4BC23F54256E285B002EEDBC /* InputView.swift */,
-				4B1BB96F2510761B000EF7AF /* CreateObject.swift */,
+				4B1BB96F2510761B000EF7AF /* Generate.swift */,
 				4B8D9084251C5CB200D369D1 /* APIClient.swift */,
 				4BFB2E4B251D7F3C00093EDB /* PaintAction.swift */,
 				4B5758ED2542B4E200A5E682 /* SprashView.swift */,
@@ -450,7 +450,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4B1BB9702510761B000EF7AF /* CreateObject.swift in Sources */,
+				4B1BB9702510761B000EF7AF /* Generate.swift in Sources */,
 				4B78EE8825105771000CFCFF /* AppDelegate.swift in Sources */,
 				4B78EEB6251059EE000CFCFF /* PaintCollectionViewController.swift in Sources */,
 				4BC23F55256E285B002EEDBC /* InputView.swift in Sources */,

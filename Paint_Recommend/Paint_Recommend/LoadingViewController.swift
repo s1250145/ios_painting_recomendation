@@ -12,7 +12,7 @@ import NVActivityIndicatorView
 class LoadingViewController: UIViewController {
     let indicator = NVActivityIndicatorView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.size.width/2, height: UIScreen.main.bounds.size.height/2), type: .ballScaleRippleMultiple, color: UIColor.q4.main, padding: 5.0)
 
-    let greetingLabel = CreateObject.normalLabel("Now Downloading...", size: 15, frame: CGRect(x: 0, y: 0, width: 0, height: 15))
+    let greetingLabel = Generate.normalLabel("Now Downloading...", size: 15, frame: CGRect(x: 0, y: 0, width: 0, height: 15))
 
     override func viewDidLoad() {
         super.viewDidLoad()

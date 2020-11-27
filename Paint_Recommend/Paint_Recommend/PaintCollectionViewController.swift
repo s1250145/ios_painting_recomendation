@@ -10,7 +10,7 @@ import UIKit
 
 class PaintCollectionViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UINavigationControllerDelegate {
     var paintDataSet = [PaintData]()
-    let garally = CreateObject.collection()
+    let garally = Generate.collection()
 
     override func viewDidLoad() {
         super.viewDidLoad()
