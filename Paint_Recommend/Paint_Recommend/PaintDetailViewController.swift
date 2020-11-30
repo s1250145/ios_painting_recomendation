@@ -21,9 +21,6 @@ class PaintDetailViewController: UIViewController, UINavigationControllerDelegat
     var age: String = ""
     var imageName: String = ""
 
-    // popup view
-    let inputFieldView = InputView()
-
     // check submit
     var isSubmit = false
 
@@ -76,8 +73,6 @@ class PaintDetailViewController: UIViewController, UINavigationControllerDelegat
         controller.closeButton.addTarget(self, action: #selector(didTappedSubmitButton(_:)), for: .touchUpInside)
         // 表示されるがbutton, sliderが反応しない
         controller.addArrangedSubview(view: customView.view, height: 430)
-        // きちんと動く
-//        controller.addArrangedSubview(view: inputFieldView, height: 430)
 
         controller.presentOn(presentingViewController: self, animated: true, onDismiss: nil)
     }
